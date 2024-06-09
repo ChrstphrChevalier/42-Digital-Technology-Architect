@@ -50,4 +50,51 @@
 
 #### <p align="center"> *In short, the School 42 course was a real challenge that tested not only my technical skills, but also my resilience, my ability to learn independently, and my ability to work in a team. I came away greatly transformed and better prepared for future challenges in the field of programming and software engineering.* </p>
 
+# <p align="center">    </p>
+
+# <p align="center"> - *EXAM 01* - </p>
+
+##### <p align="center"> *During the first course 42 exam, I am expected to demonstrate a solid understanding of the basics of C programming.* </p>
+##### <p align="center"> *I will be required to solve exercises covering fundamental concepts such as loops, conditionals, functions, and data management. memory. An ability to write clean, well-documented code is essential, as well as proficiency in compiling and debugging programs.* </p>
+##### <p align="center"> *The exam will also assess my ability to apply simple algorithms and manipulate basic data structures like arrays and strings. I will have to demonstrate my skills in solving problems independently and my ability to understand and correct errors in the code.* </p>
+##### <p align="center"> *In short, the exam aims to check my preparation for more complex projects and my ability to progress in the course.* </p>
+
+### <p align="center"> - RESULT - </p>
+
+### <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/824e372b-0cc5-4a6f-acde-d48789f17971) </p>
+
+# <p align="center">    </p>
+
+# <p align="center"> - *EXAM 02* - </p>
+
+##### <p align="center"> *During the second course 42 exam, I am expected to demonstrate a thorough understanding of more advanced concepts in programming.* </p>
+
+##### <p align="center"> *I will be required to solve exercises involving complex algorithms, manipulation of dynamic data structures such as linked lists, trees and graphs. Memory management, including dynamic allocation and memory leak prevention, will be crucial.* </p>
+
+##### <p align="center"> *The exam will also test my ability to write modular and well-structured programs, as well as my skill in optimizing code to improve efficiency. I will be expected to demonstrate my mastery of the concepts of recursion and sorting and searching algorithms. Additionally, the ability to debug complex programs and solve problems collaboratively with others will be assessed.* </p>
+
+##### <p align="center"> *In short, the exam aims to check my preparation for more sophisticated technical challenges and my progress in the course.* </p>
+
+### <p align="center"> - RESULT - </p>
+
+### <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/824e372b-0cc5-4a6f-acde-d48789f17971) </p>
+
+# <p align="center">    </p>
+
+# <p align="center"> - *EXAM 03* - </p>
+
+##### <p align="center"> *By the third course 42 exam, I am expected to demonstrate advanced mastery of programming concepts and complex data structures.* </p>
+
+##### <p align="center"> *I will be required to solve problems involving sophisticated algorithms, such as graph algorithms, manipulation of binary search trees, and advanced data structures such as hash tables.* </p>
+
+##### <p align="center"> *The exam will assess my ability to optimize algorithms for maximum performance and manage large-scale programming projects. Understanding advanced memory management, including pointer concepts and dynamic allocation, will be crucial.* </p>
+
+##### <p align="center"> *I will also have to show my competence in concurrent and parallel programming. Additionally, the ability to collaborate effectively with other students on complex projects will be tested.* </p>
+
+##### <p align="center"> *In short, the exam aims to verify my preparation for the most complex challenges and my ability to apply my knowledge in real and sophisticated contexts.* </p>
+
+### <p align="center"> - RESULT - </p>
+
+### <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/824e372b-0cc5-4a6f-acde-d48789f17971) </p>
+
 # <p align="center"> [![waziz's 42 stats](https://badge.mediaplus.ma/binary/waziz?1337Badge=off&UM6P=off)](https://github.com/oakoudad/badge42) </p>
