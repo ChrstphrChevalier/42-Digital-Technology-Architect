@@ -1,4 +1,4 @@
-# <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/a30b8789-d1a9-4287-8e68-59654944a66e) </p>
+# <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/0fa93075-29af-4d6e-8a55-d0e99bffeba2) </p>
 
 # <p align="center"> - Group Work - </p>
 
