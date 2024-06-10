@@ -14,6 +14,8 @@
 
 ##### <p align="center"> *In summary, the Push Swap project allowed me to consolidate my skills in algorithms, optimization and manipulation of data structures. The lessons learned from this subsequent project will be useful to me in my subsequent projects, where I am often required to design and implement efficient algorithms to solve complex problems.* </p>
 
+# <p align="center">    </p>
+
 # <p align="center"> - Result - </p>
 
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/6e0c6ab2-97fb-4b22-86c6-5ece06c6acb0) </p>
