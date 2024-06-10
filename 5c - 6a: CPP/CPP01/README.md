@@ -1,4 +1,4 @@
-# <p align="center"> !![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/afce24bc-523f-42fe-bc77-b3bd520d04ba) </p>
+# <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/afce24bc-523f-42fe-bc77-b3bd520d04ba) </p>
 
 # <p align="center">     </p>
 
