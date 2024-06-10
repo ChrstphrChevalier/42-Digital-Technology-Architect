@@ -4,6 +4,6 @@
 
 # <p align="center"> - Result - </p>
 
-# <p align="center"> *Loading..* </p>
+# <p align="center"> *loading...* </p>
 
 # <p align="center"> - #*next* - </p>
