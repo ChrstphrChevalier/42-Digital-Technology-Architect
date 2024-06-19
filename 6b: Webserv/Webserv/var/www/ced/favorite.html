@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CedFavorite</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #00e1ff; /* Bleu turquoise */
+            text-align: center;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #87CEEB; /* Bleu ciel */
+            border-radius: 10px;
+            padding: 40px;
+            background-color: #222;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centrer le contenu de l'encadré */
+        }
+
+        .link {
+            color: #00e1ff; /* Bleu turquoise */
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+		.bottom-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #87CEEB; /* Bleu ciel */
+            text-decoration: none;
+            z-index: 1; /* Assure que le lien est au-dessus du contenu */
+        }
+
+        .container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px; /* Espacement au-dessus de l'image */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CedFavorite</h1>
+        <p><em>School 42's Cube 3D project is truly amazing. It allowed me to explore advanced concepts in programming, like 3D rendering and matrix transformations, in a very concrete way. I had to demonstrate rigor and problem solving to overcome the technical challenges that presented themselves. This project also gave me a lot of freedom to customize my work and express my creativity in how I implemented the features of the 3D cube. Successfully completing this project really strengthened my portfolio and my confidence in my IT skills. It was an enriching experience that prepared me to take on more complex challenges.</em></p>
+        <p><a class="link" href="https://github.com/aceyzz/cub3d-2" target="_blank">- Project -</a></p>
+        <img src="favorite.webp" alt="Favorite Project Image" onerror="this.style.display='none';">
+		<p><a class="bottom-left" href="ced.html" onclick="return !this.href.includes('undefined')"><- Home</a></p>
+    </div>
+</body>
+</html>
