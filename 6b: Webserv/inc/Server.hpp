@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 21:29:25 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/19 12:55:49 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/19 16:47:33 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Server {
 		void					validServ()	const;
 
 	public:
-		Server(const vector<pair<string, string> >& config, int iD);
+		Server(const vector<pair<string, string> >& config);
 		~Server();
 
 		const vector<int>&	getPorts() const {

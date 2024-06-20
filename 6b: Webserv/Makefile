@@ -11,8 +11,8 @@ GRAY    = \e[33;2;37m
 RESET   = \e[0m
 CURSIVE = \e[33;3m
 
-HEADERS = inc/colors.hpp inc/librairies.hpp inc/Listen.hpp inc/Location.hpp inc/Server.hpp inc/Webserv.hpp
-SRCS    = src/Listen.cpp src/Server.cpp src/Webserv.cpp main.cpp
+HEADERS = inc/colors.hpp inc/librairies.hpp inc/Request.hpp inc/Listen.hpp inc/Location.hpp inc/Server.hpp inc/Webserv.hpp
+SRCS    = src/Request.cpp src/Listen.cpp src/Server.cpp src/Webserv.cpp main.cpp
 OBJS    = $(SRCS:%.cpp=obj/%.o)
 
 all: directories $(NAME)

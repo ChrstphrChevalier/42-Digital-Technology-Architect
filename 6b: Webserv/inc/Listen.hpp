@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 12:50:14 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/19 12:54:20 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/19 16:49:06 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 class Listen {
 	private:
 		vector<int>				_sockets;
+		map<int, const Server&>		_whichServ;
 		vector<Request>			_requests;
 		int						_kqueueFd;
 
 		void	createSockets(const vector<Server>& servers);
 		void	initKqueue();
-		void	run(const vector<Server>& servers);
+		void	run();
 
 	public:
 		Listen(const vector<Server>& servers);

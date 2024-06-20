@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 13:02:31 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/19 12:55:09 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/20 09:54:08 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	Listen::createSockets(const vector<Server>& servers) {
 			if (isValid) {
 				cout << PURP << ITAL << "Socket_fd" << RST << CYAN << " -> " << YLLW << socket_fd << RST << endl;
 				_sockets.push_back(socket_fd); // Ajoute la socket à la liste des sockets
+				_whichServ.insert(make_pair(socket_fd, ref(*its))); // Associe la socket à son Server.
 				countPort++;
 			}
 			else 
@@ -121,7 +122,7 @@ void Listen::initKqueue() {
 		// |     |      +--------------------------------------------------> Ident: Descripteur de fichier de la socket (*it)
 		// |     +---------------------------------------------------------> Kevent structure (ev_set) à initialiser
 		// +---------------------------------------------------------------> Macro EV_SET pour initialiser une structure kevent
-
+		
 		// Ajoute l'événement à kqueue et vérifie s'il y a une erreur
 		if (kevent(_kqueueFd, &ev_set, 1, NULL, 0, NULL) < 0) {
 				//      |        |     |    |   |   |
@@ -131,7 +132,6 @@ void Listen::initKqueue() {
 				//      |        |     +-----------------> Nombre d'éléments dans changelist (1 ici, car nous ajoutons un événement)
 				//      |        +-----------------------> Pointeur vers un tableau de kevent pour ajouter/modifier des événements (ici, &ev_set)
 				//      +--------------------------------> Identifiant du kqueue à surveiller (_kqueueFd)
-
 			cout << PURP << "socket_fd " << GRY2 << "-> " << YLLW << *it << CYAN << " | " << RST << "EVFILT_READ" << GRY1 << " : " << RST;
 			throw runtime_error("Failed to add socket to kqueue");
 		}
@@ -139,15 +139,17 @@ void Listen::initKqueue() {
 	}
 }
 
-void Listen::run(const vector<Server>& servers) {
-    // Déclare un tableau de structures kevent pour stocker les événements
-    struct kevent ev_list[1024];
-    cout << CYAN << ITAL << "Running Webserv..." << RST << endl;
-	cout << endl;
+void Listen::run() {
+    map<int, string> ev_buffer; // Map pour stocker les données lues de chaque client
+    map<int, ssize_t> ev_length; // Map pour stocker la longueur des données attendues de chaque client
+    int mem_fd; // Descripteur de fichier mémoire pour le socket en cours de traitement
+    struct kevent ev_list[1500]; // Liste des événements pour kevent
 
-    while (true) {
-        // Attend et récupère les événements sur kqueue, en les stockant dans ev_list
-        int nev = kevent(_kqueueFd, NULL, 0, ev_list, 1024, NULL);
+    cout << CYAN << ITAL << "Running Webserv..." << RST << endl;
+    cout << endl;
+
+    while (true) { // Boucle principale du serveur
+        int nev = kevent(_kqueueFd, NULL, 0, ev_list, 1500, NULL); // Récupère les événements
 		//                   |      |     |      |     |     |
 		//                   |      |     |      |     |     +-------> Timeout: NULL signifie attendre indéfiniment
 		//                   |      |     |      |     +-------------> Nombre maximum d'événements à retourner (ici, 1024)
@@ -155,42 +157,46 @@ void Listen::run(const vector<Server>& servers) {
 		//                   |      |     +--------------------------> Nombre d'éléments dans changelist (0 ici, car on n'ajoute ni ne modifie des événements)
 		//                   |      +--------------------------------> Pointeur vers un tableau de kevent pour ajouter/modifier des événements (NULL ici, car on n'ajoute ni ne modifie des événements)
 		//                   +---------------------------------------> Identifiant du kqueue à surveiller (_kqueueFd)
-        if (nev < 0) {
-            throw runtime_error("kevent error");
+        if (nev < 0) { // Vérifie les erreurs
+            throw runtime_error("kevent error"); // Lance une exception en cas d'erreur
         }
 
-        // Parcourt tous les événements récupérés
-        for (int i = 0; i < nev; i++) {
-            // Récupère l'identifiant du descripteur de fichier de l'événement
-            int ev_fd = ev_list[i].ident;
+        for (int i = 0; i < nev; i++) { // Parcourt les événements
+            int ev_fd = ev_list[i].ident; // Récupère le descripteur de fichier de l'événement
 
-            // Vérifie si l'événement est de type EVFILT_READ (lecture)
-            if (ev_list[i].filter == EVFILT_READ) {
-                // Vérifie si le descripteur de fichier appartient aux sockets serveur
-                if (find(_sockets.begin(), _sockets.end(), ev_fd) != _sockets.end()) {
-					// Déclare une structure sockaddr_in pour stocker les informations du client qui se connecte
-                    struct sockaddr_in client_addr;
-					// Déclare et initialise la variable client_len avec la taille de la structure client_addr
-                    socklen_t client_len = sizeof(client_addr);
-					// Accepte une nouvelle connexion entrante sur le descripteur de fichier ev_fd (évènement)
-                    int client_fd = accept(ev_fd, (struct sockaddr*)&client_addr, &client_len);
+            if (ev_list[i].filter == EVFILT_READ) { // Vérifie si l'événement est un événement de lecture
+                if (find(_sockets.begin(), _sockets.end(), ev_fd) != _sockets.end()) { // Vérifie si le descripteur de fichier est dans la liste des sockets surveillés
+                    mem_fd = ev_fd; // Enregistre l'iD du sokcet écouté
+                    struct sockaddr_in client_addr; // Structure pour l'adresse du client
+                    socklen_t client_len = sizeof(client_addr); // Longueur de la structure d'adresse client
+                    int client_fd = accept(ev_fd, (struct sockaddr*)&client_addr, &client_len); // Accepte la connexion entrante
 					//    |                  |                        |                   |
 					//    |                  |                        |                   +----> Pointeur vers la taille de la structure client_addr
 					//    |                  |                        +------------------------> Structure contenant les informations du client accepté
 					//    |                  +-------------------------------------------------> Descripteur de fichier sur lequel accepter la connexion (événement év_fd)
 					//    +--------------------------------------------------------------------> Descripteur de fichier retourné pour la nouvelle connexion client (client_fd)
-
-                    if (client_fd < 0) {
-                        cout << REDD << "Error on accept" << RST << endl;
-                        continue;
+                    if (client_fd < 0) { // Vérifie les erreurs lors de l'acceptation
+                        cout << REDD << "Error on accept" << RST << endl; // Affiche une erreur en cas d'échec d'acceptation
+                        continue; // Passe à l'itération suivante de la boucle
                     }
 
-                    // Affiche un message indiquant qu'une nouvelle connexion a été acceptée
-                    cout << LIME << "New connection accepted" << RST << " (" << PURP << "client_fd" << RST << " -> " << YLLW << client_fd << RST << ")" << endl;
+                    int flags = fcntl(client_fd, F_GETFL, 0); // Récupère les indicateurs de fichier du descripteur de fichier client
+                    if (flags < 0) { // Vérifie les erreurs lors de la récupération des indicateurs
+                        cout << REDD << "Error getting client_fd flags" << RST << endl; // Affiche une erreur en cas d'échec
+                        close(client_fd); // Ferme le descripteur de fichier client
+                        continue; // Passe à l'itération suivante de la boucle
+                    }
 
-                    // Configure un nouvel événement kevent pour surveiller les lectures sur le descripteur de fichier du client
-                    struct kevent ev_set;
-                    EV_SET(&ev_set, client_fd, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, NULL);
+                    if (fcntl(client_fd, F_SETFL, flags | O_NONBLOCK) < 0) { // Définit le descripteur de fichier client en mode non bloquant
+                        cout << REDD << "Error setting client_fd to non-blocking" << RST << endl; // Affiche une erreur en cas d'échec
+                        close(client_fd); // Ferme le descripteur de fichier client
+                        continue; // Passe à l'itération suivante de la boucle
+                    }
+
+                    cout << ITAL << "New connection" << RST << GRY1 << " -> " LIME << "accepted" << RST << " | " << PURP << "socket_fd" << GRY1 << " : " << YLLW << mem_fd << RST << GRY1 << " -> " << PURP << "client_fd" << GRY1 << " : " << YLLW << client_fd << RST << endl;
+
+                    struct kevent ev_set; // Structure pour ajouter un événement à kqueue
+                    EV_SET(&ev_set, client_fd, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, NULL); // Configure l'événement pour le descripteur de fichier client en lecture
 					// |       |         |           |             |            |  |    |
 					// |       |         |           |             |            |  |    +----> Udata: NULL car pas de données utilisateur associées
 					// |       |         |           |             |            |  +---------> fflags: Aucune option spéciale (0)
@@ -200,23 +206,64 @@ void Listen::run(const vector<Server>& servers) {
 					// |       |         +---------------------------------------------------> Ident: Descripteur de fichier pour lequel l'événement est configuré (client_fd)
 					// |       +-------------------------------------------------------------> Kevent structure (ev_set) à initialiser
 					// +---------------------------------------------------------------------> Macro EV_SET pour initialiser une structure kevent
-
-                    // Ajoute le descripteur de fichier du client à kqueue et vérifie s'il y a une erreur
-                    if (kevent(_kqueueFd, &ev_set, 1, NULL, 0, NULL) < 0) {
-                        cout << REDD << "Failed to add client_fd to kqueue" << RST << endl;
-                        close(client_fd);
+                    if (kevent(_kqueueFd, &ev_set, 1, NULL, 0, NULL) < 0) { // Ajoute l'événement à kqueue
+                        cout << REDD << "Failed to add client_fd to kqueue" << RST << endl; // Affiche une erreur en cas d'échec
+                        close(client_fd); // Ferme le descripteur de fichier client
                     }
                 } else {
+                    char buffer[1024]; // Tampon pour stocker les données lues
+                    ssize_t bytesRead = read(ev_fd, buffer, sizeof(buffer) - 1); // Lit les données depuis le descripteur de fichier client
+                    if (bytesRead < 0) { // Vérifie les erreurs lors de la lecture
+                        cout << "Error reading from client_fd" << endl; // Affiche une erreur en cas d'échec
+                        close(ev_fd); // Ferme le descripteur de fichier client
+                        ev_buffer.erase(ev_fd); // Supprime les données du tampon pour ce descripteur de fichier
+                        ev_length.erase(ev_fd); // Supprime la longueur attendue pour ce descripteur de fichier
+                    } else if (bytesRead == 0) { // Vérifie si la connexion est fermée par le client
+                        cout << PURP << "client_fd" << RST << GRY1 << " : " << YLLW << ev_fd << GRY1 << " -> " << REDD << "disconnected" << RST << endl; // Affiche la déconnexion du client
+                        close(ev_fd); // Ferme le descripteur de fichier client
+                        ev_buffer.erase(ev_fd); // Supprime les données du tampon pour ce descripteur de fichier
+                        ev_length.erase(ev_fd); // Supprime la longueur attendue pour ce descripteur de fichier
+                    } else {
+                        buffer[bytesRead] = '\0'; // Ajoute la terminaison de chaîne au tampon lu
+                        ev_buffer[ev_fd] += buffer; // Ajoute les données lues au tampon pour ce descripteur de fichier
+
+                        if (ev_buffer[ev_fd].find("\r\n\r\n") != string::npos) { // Vérifie si la fin de l'en-tête HTTP est présente
+                            size_t contentLength = ev_buffer[ev_fd].find("Content-Length:"); // Recherche la longueur du contenu dans l'en-tête
+                            if (contentLength != string::npos) { // Si trouvé
+                                size_t endLinePos = ev_buffer[ev_fd].find("\r\n", contentLength); // Trouve la fin de la ligne pour la longueur du contenu
+                                string contentLengthStr = ev_buffer[ev_fd].substr(contentLength + 15, endLinePos - contentLength - 15); // Extrait la longueur du contenu
+                                ev_length[ev_fd] = stoi(contentLengthStr); // Convertit en entier et stocke la longueur du contenu attendu
+                            } else {
+                                ev_length[ev_fd] = 0; // Aucune longueur de contenu spécifiée, donc zéro
+                            }
+                        }
+
+                        if (ev_buffer[ev_fd].find("\r\n\r\n") != string::npos &&
+                            ev_buffer[ev_fd].size() >= ev_buffer[ev_fd].find("\r\n\r\n") + 4 + ev_length[ev_fd]) { // Vérifie si la requête HTTP complète a été reçue
+
+							for (map<int, const Server&>::const_iterator ita = _whichServ.begin(); ita != _whichServ.end(); ita++) {
+								if (ita->first == mem_fd) { // recherche du server concerné par la requête.
+									const Server& tmp = ita->second;
+									_requests.push_back(Request(tmp, ev_buffer[ev_fd], ev_fd));
+									break ;
+								}
+							}
+                            close(ev_fd); // Ferme le descripteur de fichier client
+                            ev_buffer.erase(ev_fd); // Supprime les données du tampon pour ce descripteur de fichier
+                            ev_length.erase(ev_fd); // Supprime la longueur attendue pour ce descripteur de fichier
+                        }
+                    }
                 }
             }
         }
     }
 }
+
 Listen::Listen(const vector<Server>& servers) {
 	createSockets(servers);
 	initKqueue();
 	cout << endl;
-	run(const vector<Server>& servers);
+	run();
 }
 
 Listen::~Listen() {
