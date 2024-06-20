@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 19:48:33 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/15 00:57:09 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/20 14:00:50 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ class Location {
 	public:
 		Location(const string name, const string& path, const vector<string>& methods, bool listing)
         : _location(name), _path(path), _allowed_methods(methods), _listing(listing) {}
-		~Location() {}
+		~Location() {
+			_allowed_methods.clear();
+		}
 
 		const string&			getName() const {
 			return _location;

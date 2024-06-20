@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 10:42:50 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/19 12:55:21 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:57:59 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	Webserv::parseConfig(const string& config) {
 			}
 		}
 		_settings.push_back(current);
+		current.clear();
 	}
 	else
 		throw runtime_error("Invalid file, expected : 'config.ini'");
@@ -74,5 +75,7 @@ Webserv::Webserv(const string& config) {
 }
 
 Webserv::~Webserv() {
+	_settings.clear();
+	_servers.clear();
 	delete _listen;
 }

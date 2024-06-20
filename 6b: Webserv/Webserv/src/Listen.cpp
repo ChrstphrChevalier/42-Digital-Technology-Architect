@@ -6,11 +6,13 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 13:02:31 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/20 09:54:08 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/20 14:05:00 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Listen.hpp"
+
+volatile sig_atomic_t Sig = 0;
 
 static void	socketOptions(int socket_fd, bool *isValid) {
 	int opt = 1;
@@ -139,7 +141,24 @@ void Listen::initKqueue() {
 	}
 }
 
+static void signal(int sig) {
+    if (sig == SIGINT || sig == SIGTERM || sig == SIGQUIT) {
+        Sig = 1; // Mettre la variable à 1 pour indiquer qu'on doit s'arrêter
+    }
+}
+
+static void setup_signal() {
+    struct sigaction sa;
+    sa.sa_handler = signal;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGINT, &sa, NULL);
+    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGQUIT, &sa, NULL);
+}
+
 void Listen::run() {
+	setup_signal();
     map<int, string> ev_buffer; // Map pour stocker les données lues de chaque client
     map<int, ssize_t> ev_length; // Map pour stocker la longueur des données attendues de chaque client
     int mem_fd; // Descripteur de fichier mémoire pour le socket en cours de traitement
@@ -148,7 +167,7 @@ void Listen::run() {
     cout << CYAN << ITAL << "Running Webserv..." << RST << endl;
     cout << endl;
 
-    while (true) { // Boucle principale du serveur
+    while (!Sig) { // Boucle principale du serveur
         int nev = kevent(_kqueueFd, NULL, 0, ev_list, 1500, NULL); // Récupère les événements
 		//                   |      |     |      |     |     |
 		//                   |      |     |      |     |     +-------> Timeout: NULL signifie attendre indéfiniment
@@ -157,7 +176,7 @@ void Listen::run() {
 		//                   |      |     +--------------------------> Nombre d'éléments dans changelist (0 ici, car on n'ajoute ni ne modifie des événements)
 		//                   |      +--------------------------------> Pointeur vers un tableau de kevent pour ajouter/modifier des événements (NULL ici, car on n'ajoute ni ne modifie des événements)
 		//                   +---------------------------------------> Identifiant du kqueue à surveiller (_kqueueFd)
-        if (nev < 0) { // Vérifie les erreurs
+        if (nev < 0 && !Sig) { // Vérifie les erreurs
             throw runtime_error("kevent error"); // Lance une exception en cas d'erreur
         }
 
@@ -230,7 +249,7 @@ void Listen::run() {
                         if (ev_buffer[ev_fd].find("\r\n\r\n") != string::npos) { // Vérifie si la fin de l'en-tête HTTP est présente
                             size_t contentLength = ev_buffer[ev_fd].find("Content-Length:"); // Recherche la longueur du contenu dans l'en-tête
                             if (contentLength != string::npos) { // Si trouvé
-                                size_t endLinePos = ev_buffer[ev_fd].find("\r\n", contentLength); // Trouve la fin de la ligne pour la longueur du contenu
+                                size_t endLinePos = ev_buffer[ev_fd].find("\r\n", contentLength); // Trouve la fin de la ligne pour la longueu du contenu
                                 string contentLengthStr = ev_buffer[ev_fd].substr(contentLength + 15, endLinePos - contentLength - 15); // Extrait la longueur du contenu
                                 ev_length[ev_fd] = stoi(contentLengthStr); // Convertit en entier et stocke la longueur du contenu attendu
                             } else {
@@ -248,15 +267,19 @@ void Listen::run() {
 									break ;
 								}
 							}
-                            close(ev_fd); // Ferme le descripteur de fichier client
                             ev_buffer.erase(ev_fd); // Supprime les données du tampon pour ce descripteur de fichier
                             ev_length.erase(ev_fd); // Supprime la longueur attendue pour ce descripteur de fichier
+                            close(ev_fd); // Ferme le descripteur de fichier client
                         }
                     }
                 }
             }
         }
     }
+	for (map<int, string>::iterator itc = ev_buffer.begin(); itc != ev_buffer.end(); itc++)
+		close(itc->first);
+	ev_buffer.clear();
+	ev_length.clear();
 }
 
 Listen::Listen(const vector<Server>& servers) {
@@ -270,4 +293,7 @@ Listen::~Listen() {
 	for (vector<int>::iterator it = _sockets.begin(); it != _sockets.end(); it++)
 		close(*it);
 	close(_kqueueFd);
+	_sockets.clear();
+	_whichServ.clear();
+	_requests.clear();
 }

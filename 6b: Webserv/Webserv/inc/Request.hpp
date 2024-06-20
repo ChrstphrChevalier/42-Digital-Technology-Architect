@@ -6,12 +6,14 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:26:10 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/20 09:24:58 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/20 11:21:35 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef REQUEST_HPP
 # define REQUEST_HPP
+
+#pragma once
 
 # include "librairies.hpp"
 # include "Server.hpp"

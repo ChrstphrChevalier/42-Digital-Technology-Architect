@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 00:51:52 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/15 12:46:52 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/20 11:41:28 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <sys/stat.h>
 # include <sys/socket.h>
 # include <sys/event.h>
+
+# include <csignal>
 
 # include <unistd.h>
 # include <string>

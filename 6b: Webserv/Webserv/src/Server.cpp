@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:01:26 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/19 12:55:35 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:58:06 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,14 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 							listing = true;
 					}
 					if (it->first == "location") {
+						method.clear();
 						it--;
 						break ;
 					}
 				}
 				if (!path.empty() && !method.empty())
 					_location.insert(make_pair(locName, Location(locName, path, method, listing)));
+				method.clear();
 			}
 			else if (it->first == "cgi_extensions" && !it->second.empty()) {
 				stringstream ss(it->second);
@@ -134,6 +136,7 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 		}
 		it++;
 	}
+	c.clear();
 }
 
 static void	emptyOrNot(const string& param, bool *corrupted) {
@@ -202,6 +205,7 @@ void	Server::validServ()	const {
 				if (it == am.end() - 1)
 					cout << " |";
 			}
+			am.clear();
 			cout << PURP << " LISTING" << RST << " : ";
 			if (it->second.isListing())
 				cout << YLLW << "true" << RST;
@@ -274,4 +278,9 @@ Server::Server(const vector<pair<string, string> >& config) {
 	validServ();
 }
 
-Server::~Server() {}
+Server::~Server() {
+	_port.clear();
+	_location.clear();
+	_cgiExtensions.clear();
+	_cgiHandlers.clear();
+}
