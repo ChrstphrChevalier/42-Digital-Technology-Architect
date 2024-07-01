@@ -6,27 +6,26 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 19:48:33 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/20 14:00:50 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/30 08:27:53 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef LOCATION_HPP
-# define LOCATION_HPP
-
 #pragma once
 
-# include "librairies.hpp"
+# include "lib.hpp"
+
+using namespace std;
 
 class Location {
 	private:
 		string			_location;
 		string			_path;
 		vector<string>	_allowed_methods;
-		bool			_listing;
+		bool			_autoIndex;
 
 	public:
-		Location(const string name, const string& path, const vector<string>& methods, bool listing)
-        : _location(name), _path(path), _allowed_methods(methods), _listing(listing) {}
+		Location(const string name, const string& path, const vector<string>& methods, bool autoindex)
+        : _location(name), _path(path), _allowed_methods(methods), _autoIndex(autoindex) {}
 		~Location() {
 			_allowed_methods.clear();
 		}
@@ -40,9 +39,7 @@ class Location {
 		const vector<string>&	getMethods() const {
 			return _allowed_methods;
 		}
-		bool					isListing() const {
-			return _listing;
+		bool					isAutoIndex() const {
+			return _autoIndex;
 		}
 };
-
-#endif

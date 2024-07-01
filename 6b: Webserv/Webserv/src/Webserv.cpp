@@ -3,20 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   Webserv.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
+/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 10:42:50 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/20 13:57:59 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/29 10:00:21 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Webserv.hpp"
+#include "Webserv.hpp"
+
+/*----------------------------------------------------------------------*/
+/*            			 Parsing Config File							*/
+//																		//
+/*						|		 trim		|							*/
+//																		//
+/*							- parseConfig -								*/
+/*----------------------------------------------------------------------*/
 
 static void	trim(string *str) {
 	(*str).erase(0, (*str).find_first_not_of(" \t"));
     (*str).erase((*str).find_last_not_of(" \t") + 1);
 }
 
+/* Function Master */
 void	Webserv::parseConfig(const string& config) {
 	if (config.size() > 4 && config.substr(config.size() - 4) == ".ini") {
 		ifstream ifs(config);
@@ -57,25 +66,44 @@ void	Webserv::parseConfig(const string& config) {
 		throw runtime_error("Invalid file, expected : 'config.ini'");
 }
 
+/*----------------------------------------------------------------------*/
+/*            				Creations of Servers						*/
+//																		//
+/*								- addServ -								*/
+/*----------------------------------------------------------------------*/
+
 void	Webserv::addServ() {
 	vector<vector<pair<string, string> > >::iterator it = _settings.begin();
 	int i = 1;
 	while (it != _settings.end()) {
 		cout << BLUE << "SERVER " << i << " : " << RST << GRY2 << ITAL << "configuration..." << RST << endl;
 		_servers.push_back(Server(*it));
+		cout << ">>> " << BLUE << "SERVER " << i << CYAN << " -> " << LIME << ITAL << "CONFIGURED SUCCESSFULLY" << RST << " <<<" << endl;
+		cout << endl;
 		it++;
 		i++;
 	}
 }
 
-Webserv::Webserv(const string& config) {
+/*----------------------------------------------------------------------*/
+/*            			Constructor Master								*/
+/*----------------------------------------------------------------------*/
+
+Webserv::Webserv(const string& config) : _listen(NULL) {
 	parseConfig(config);
 	addServ();
 	_listen = new Listen(_servers); 
+	delete _listen;
+	_listen = NULL;
 }
+
+/*----------------------------------------------------------------------*/
+/*            			Destructor Master								*/
+/*----------------------------------------------------------------------*/
 
 Webserv::~Webserv() {
 	_settings.clear();
 	_servers.clear();
-	delete _listen;
+	if (_listen)
+		delete _listen;
 }

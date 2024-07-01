@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   Server.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
+/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:01:26 by waziz             #+#    #+#             */
-/*   Updated: 2024/06/20 13:58:06 by waziz            ###   ########.fr       */
+/*   Updated: 2024/06/29 10:14:32 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Server.hpp"
+
+/*----------------------------------------------------------------------*/
+/*            				 Init Configuration							*/
+//																		//
+/*							|	   trim			|						*/
+/*							|	 validNum		|						*/
+/*							|     validPath		|						*/
+/*							|    validMethod	|						*/
+/*							|	validSysPath	|						*/
+//																		//
+/*							   - configServ -							*/
+/*----------------------------------------------------------------------*/
 
 static void	trim(string *str) {
 	(*str).erase(0, (*str).find_first_not_of(" \t"));
@@ -23,7 +35,7 @@ static	bool	validNum(string num, int option) {
 			return false;
 	}
 	else {
-		if (num.length() > 9)
+		if (num.length() > 19)
 			return false;
 	}
 	for (string::iterator it = num.begin(); it != num.end(); it++)
@@ -38,13 +50,14 @@ static bool validPath(const string& path) {
 }
 
 static bool validMethod(const string& method) {
-	return method == "GET" || method == "POST" || method == "DELETE";
+	return method == "GET" || method == "POST" || method == "DELETE" || method == "NONE";
 }
 
 static bool validSysPath(const string& path) {
 	return access(path.c_str(), X_OK) == 0;
 }
 
+/* Function Master */
 void	Server::configServ(const vector<pair<string, string> >& config) {
 	vector<pair<string, string> > c = config;
 	vector<pair<string, string> >::iterator it = c.begin();
@@ -69,6 +82,10 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 				if (validNum(it->second, 1))
 					_maxBodySize = stoll(it->second);
 			}
+			else if (it->first == "default_directory" && !it->second.empty()) {
+				// if (validPath(""))
+				_default_directory = it->second;
+			}
 			else if (it->first == "default_page" && !it->second.empty()) {
 				if (validPath(it->second))
 					_default_page = it->second;
@@ -81,9 +98,9 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 				string			locName = it->second;
 				string			path;
 				vector<string>	method;
-				bool			listing = false;
+				bool			autoindex = false;
 				it++;
-				while (it != c.end() && it->first != "listing") {
+				while (it != c.end() && it->first != "autoindex") {
 					if (it->first == "allowed_methods" && !it->second.empty()) {
 						stringstream ss(it->second);
 						string	meth;
@@ -98,9 +115,9 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 							path = it->second;
 					}
 					it++;
-					if (it->first == "listing" && !it->second.empty()) {
-						if (it->second == "true")
-							listing = true;
+					if (it->first == "autoindex" && !it->second.empty()) {
+						if (it->second == "on")
+							autoindex = true;
 					}
 					if (it->first == "location") {
 						method.clear();
@@ -109,7 +126,7 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 					}
 				}
 				if (!path.empty() && !method.empty())
-					_location.insert(make_pair(locName, Location(locName, path, method, listing)));
+					_location.insert(make_pair(locName, Location(locName, path, method, autoindex)));
 				method.clear();
 			}
 			else if (it->first == "cgi_extensions" && !it->second.empty()) {
@@ -139,6 +156,21 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 	c.clear();
 }
 
+/*----------------------------------------------------------------------*/
+/*            				 Check Configuration 						*/
+//																		//
+/*							|	 emptyOrNot		|						*/
+/*							|	  servName 		|						*/
+/*							|	    port 		|						*/
+/*							|    validlocs		|						*/
+/*							|	    locs 		|						*/
+/*							|    maxBodySize 	|						*/
+/*							|    cgiExtension 	|						*/
+/*							|    cgiHandlers 	|						*/
+//																		//
+/*							   - validServ -							*/
+/*----------------------------------------------------------------------*/
+
 static void	emptyOrNot(const string& param, bool *corrupted) {
 	if (param.empty()) {
 		cout << REDD << "KO" << RST << endl;
@@ -148,51 +180,47 @@ static void	emptyOrNot(const string& param, bool *corrupted) {
 		cout << LIME << "OK" << RST << endl;
 }
 
-static bool	validLocation(const Location& loc) {
+static void	servName(string name, bool *corrupted) {
+	if (name.empty()) {
+		cout << REDD << "KO" << RST << endl;
+		(*corrupted) = true;
+	}
+	else
+		cout << YLLW << name << RST << " -> " << LIME << "OK" << RST << endl;
+}
+
+static void	port(const vector<int>& port, bool *corrupted) {
+	if (port.empty()) {
+		cout << REDD << "KO" << RST << endl;
+		(*corrupted) = true;
+	}
+	else {
+		for (vector<int>::const_iterator it = port.begin(); it != port.end(); it++) {
+			cout << YLLW << *it << RST;
+			if (it < port.end() - 1)
+				cout << " / ";
+		}
+		cout << LIME << " : OK" << RST << endl;
+	}
+}
+
+static bool	validlocs(const Location& loc) {
 	if (loc.getPath().empty() || loc.getMethods().empty())
 		return false;
 	return true;
 }
 
-void	Server::validServ()	const {
-	bool corrupted = false;
-
-	cout << CYAN << "host" << RST << " : ";
-	emptyOrNot(_host, &corrupted);
-	cout << CYAN << "root"  << RST << " : ";
-	emptyOrNot(_root, &corrupted);
-	cout << CYAN << "server_name" << RST << " : ";
-	if (_serverName.empty()) {
-		cout << REDD << "KO" << RST << endl;
-		corrupted = true;
-	}
-	else 
-		cout << YLLW << _serverName << RST << " -> " << LIME << "OK" << RST << endl;
-	cout << endl;
-	cout << CYAN << "port" << RST << " -> ";
-	if (_port.empty()) {
-		cout << REDD << "KO" << RST << endl;
-		corrupted = true;
-	}
-	else {
-		for (vector<int>::const_iterator it = _port.begin(); it != _port.end(); it++) {
-			cout << YLLW << *it << RST;
-			if (it < _port.end() - 1)
-				cout << " / ";
-		}
-		cout << LIME << " : OK" << RST << endl;
-	}
-	cout << endl;
-	if (_location.size() < 2) {
+static void locs(const map<string, Location>& loc, bool *corrupted) {
+	if (loc.size() < 2) {
 		cout << CYAN << "location"  << RST << " : " << REDD << "KO" << RST << endl;
-		corrupted = true;
+		(*corrupted) = true;
 	}
-	for(map<string, Location>::const_iterator it = _location.begin(); it != _location.end(); it++) {
+	for(map<string, Location>::const_iterator it = loc.begin(); it != loc.end(); it++) {
 		cout << CYAN << "location " << RST;
 		cout << " | " << PURP << "NAME" << RST << " : " << YLLW << it->second.getName() << RST << " |";
-		if (!validLocation(it->second)) {
+		if (!validlocs(it->second)) {
 			cout << REDD << " : KO" << RST << endl;
-			corrupted = true;
+			(*corrupted) = true;
 		}
 		else {
 			cout << PURP << " PATH" << RST << " : " << YLLW << it->second.getPath() << RST << " |";
@@ -206,46 +234,44 @@ void	Server::validServ()	const {
 					cout << " |";
 			}
 			am.clear();
-			cout << PURP << " LISTING" << RST << " : ";
-			if (it->second.isListing())
-				cout << YLLW << "true" << RST;
+			cout << PURP << " AutoIindex" << RST << " : ";
+			if (it->second.isAutoIndex())
+				cout << YLLW << "on" << RST;
 			else
-				cout << YLLW << "false" << RST;
+				cout << YLLW << "off" << RST;
 			cout << " ->" << LIME << " OK" << RST << endl;
 		}
-	}
-	cout << endl;
-	cout << CYAN << "default_page"  << RST << " : ";
-	emptyOrNot(_default_page, &corrupted);
-	cout << CYAN << "redirect"  << RST << " : ";
-	emptyOrNot(_redirect_page, &corrupted);
-	cout << endl;
-	cout << CYAN << "max_body_size" << RST << " : ";
-	if (_maxBodySize == -1) {
+	}	
+}
+
+static void	maxBodySize(long long int mbs, bool *corrupted) {
+	if (mbs == -1) {
 		cout << REDD << "KO" << RST << endl;
-		corrupted = true;
+		(*corrupted) = true;
 	}
-	else{
-		cout << YLLW << _maxBodySize << RST << " octets : ";
-		cout << LIME << "OK" << RST << endl;
-	}
-	cout << endl;
-	cout << CYAN << "cgi_extensions" << RST << " : ";
-	if (_cgiExtensions.size() != 2) {
+	else
+		cout << YLLW << mbs << RST << " Mo : " << LIME << "OK" << RST << endl;
+}
+
+static void	cgiExtension(const vector<string>& cgiE, bool *corrupted) {
+	if (cgiE.size() != 2) {
 		cout << REDD << "KO" << RST << endl;
-		corrupted = true;
+		(*corrupted) = true;
 	}
 	else
 		cout << LIME << "OK" << RST << endl;
-	if (_cgiHandlers.empty()) {
+}
+
+static void	cgiHandlers(const map<string, string>& cgiH, bool *corrupted) {
+	if (cgiH.empty()) {
 		cout << CYAN << "cgi.php" << RST << " : " << REDD << "KO" << RST << endl;
 		cout << CYAN << "cgi.py" << RST << " : " << REDD << "KO" << RST << endl;
-		corrupted = true;
+		(*corrupted) = true;
 	}
 	else {
 		bool php = false;
 		bool py = false;
-		for(map<string, string>::const_iterator it = _cgiHandlers.begin(); it != _cgiHandlers.end(); it++) {
+		for(map<string, string>::const_iterator it = cgiH.begin(); it != cgiH.end(); it++) {
 			if (it->first == ".php") {
 				cout << CYAN << "cgi.php" << RST << " : " << LIME << "OK" << RST << endl;
 				php = true;
@@ -257,26 +283,63 @@ void	Server::validServ()	const {
 		}
 		if (!php) {
 			cout << CYAN << "cgi.php" << RST << " : " << REDD << "KO" << RST << endl;
-			corrupted = true;
+			(*corrupted) = true;
 		}
 		if (!py) {
 			cout << CYAN << "cgi.py" << RST << " : " << REDD << "KO" << RST << endl;
-			corrupted = true;
+			(*corrupted) = true;
 		}
 	}
+}
+
+/* Function Master */
+void	Server::validServ()	const {
+	bool corrupted = false;
+
+	cout << CYAN << "host" << RST << " : ";
+	emptyOrNot(_host, &corrupted);
+	cout << CYAN << "root"  << RST << " : ";
+	emptyOrNot(_root, &corrupted);
+	cout << CYAN << "server_name" << RST << " : ";
+	servName(_serverName, &corrupted);
+	cout << endl;
+	cout << CYAN << "port" << RST << " -> ";
+	port(_port, &corrupted);
+	cout << endl;
+	locs(_location, &corrupted);
+	cout << endl;
+	cout << CYAN << "default_directory"  << RST << " : ";
+	emptyOrNot(_default_directory, &corrupted);
+	cout << CYAN << "default_page"  << RST << " : ";
+	emptyOrNot(_default_page, &corrupted);
+	cout << CYAN << "redirect"  << RST << " : ";
+	emptyOrNot(_redirect_page, &corrupted);
+	cout << endl;
+	cout << CYAN << "max_body_size" << RST << " : ";
+	maxBodySize(_maxBodySize, &corrupted);
+	cout << endl;
+	cout << CYAN << "cgi_extensions" << RST << " : ";
+	cgiExtension(_cgiExtensions, &corrupted);
+	cgiHandlers(_cgiHandlers, &corrupted);
 	cout << CYAN << "cgi_directory" << RST << " : " << RST;
 	emptyOrNot(_cgiDirectory, &corrupted);
 	cout << endl;
 	if (corrupted)
 		throw runtime_error("Configuration file corrupted.");
-	cout << ">>> " << LIME << ITAL << "SERVER CONFIGURED SUCCESSFULLY" << RST << " <<<" << endl;
-	cout << endl;
 }
+
+/*----------------------------------------------------------------------*/
+/*            			Constructor Server								*/
+/*----------------------------------------------------------------------*/
 
 Server::Server(const vector<pair<string, string> >& config) {
 	configServ(config);
 	validServ();
 }
+
+/*----------------------------------------------------------------------*/
+/*            			Destructor Server								*/
+/*----------------------------------------------------------------------*/
 
 Server::~Server() {
 	_port.clear();
