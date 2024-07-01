@@ -15,12 +15,12 @@
 volatile sig_atomic_t Sig = 0;
 
 /*----------------------------------------------------------------------*/
-/*            			Socket Initialisation							*/
-//																		//
-/*						|	socketOptions 	|							*/
-/*						|	bindAndListen	|							*/
-//																		//
-/*						  - createSockets -								*/
+/*            		   Socket Initialisation			*/
+//									//
+/*			   |   socketOptions 	|			*/
+/*			   |   bindAndListen	|			*/
+//									//
+/*			     - createSockets -				*/
 /*----------------------------------------------------------------------*/
 
 static void	socketOptions(int socket_fd, bool *isValid) {
@@ -112,9 +112,9 @@ void	Listen::createSockets(const vector<Server>& servers) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			KQUEUE Initialisation							*/
-//																		//
-/*							- initKqueue -								*/
+/*            		  KQUEUE Initialisation				*/
+//									//
+/*			     - initKqueue -				*/
 /*----------------------------------------------------------------------*/
 
 void Listen::initKqueue() {
@@ -138,10 +138,10 @@ void Listen::initKqueue() {
 }
 
 /*----------------------------------------------------------------------*/
-/*            				Signal Gestion								*/
-/*																		*/
-/*								signal 									*/
-/*							 setup_signal								*/
+/*            		    Signal Gestion				*/
+/*									*/
+/*				 signal 				*/
+/*			      setup_signal				*/
 /*----------------------------------------------------------------------*/
 
 void Listen::signal(int sig) {
@@ -161,13 +161,13 @@ void Listen::setup_signal() {
 }
 
 /*----------------------------------------------------------------------*/
-/*            				Event Gestion	 							*/
-//																		//
-/*						|	  addClient		|							*/
-/*						|	recept_request	|							*/
-/*						|	send_response	|							*/
-//																		//
-/*							   - run -									*/
+/*            		      Event Gestion	 			*/
+//									//
+/*			 |	addClient	|			*/
+/*			 |    recept_request	|			*/
+/*			 |     send_response	|			*/
+//									//
+/*				  - run -				*/
 /*----------------------------------------------------------------------*/
 
 int	Listen::addClient(int *ev_fd, int *mem_fd) {
@@ -354,7 +354,7 @@ void Listen::run() {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Constructor Listen								*/
+/*            		    Constructor Listen				*/
 /*----------------------------------------------------------------------*/
 
 Listen::Listen(const vector<Server>& servers) : _req(NULL) {
@@ -365,7 +365,7 @@ Listen::Listen(const vector<Server>& servers) : _req(NULL) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Desstructor Listen								*/
+/*            		    Desstructor Listen				*/
 /*----------------------------------------------------------------------*/
 
 Listen::~Listen() {
