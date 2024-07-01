@@ -13,11 +13,11 @@
 #include "Webserv.hpp"
 
 /*----------------------------------------------------------------------*/
-/*            			 Parsing Config File							*/
-//																		//
-/*						|		 trim		|							*/
-//																		//
-/*							- parseConfig -								*/
+/*            		   Parsing Config File				*/
+//									//									//
+/*		           |      trim	      |				*/
+//									//
+/*			     - parseConfig -				*/
 /*----------------------------------------------------------------------*/
 
 static void	trim(string *str) {
@@ -67,9 +67,9 @@ void	Webserv::parseConfig(const string& config) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            				Creations of Servers						*/
-//																		//
-/*								- addServ -								*/
+/*            		    Creations of Servers			*/
+//									//
+/*				 - addServ -				*/
 /*----------------------------------------------------------------------*/
 
 void	Webserv::addServ() {
@@ -86,7 +86,7 @@ void	Webserv::addServ() {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Constructor Master								*/
+/*            		    Constructor Master				*/
 /*----------------------------------------------------------------------*/
 
 Webserv::Webserv(const string& config) : _listen(NULL) {
@@ -98,7 +98,7 @@ Webserv::Webserv(const string& config) : _listen(NULL) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Destructor Master								*/
+/*            		    Destructor Master				*/
 /*----------------------------------------------------------------------*/
 
 Webserv::~Webserv() {
