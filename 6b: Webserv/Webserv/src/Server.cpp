@@ -13,15 +13,15 @@
 # include "Server.hpp"
 
 /*----------------------------------------------------------------------*/
-/*            				 Init Configuration							*/
-//																		//
-/*							|	   trim			|						*/
-/*							|	 validNum		|						*/
-/*							|     validPath		|						*/
-/*							|    validMethod	|						*/
-/*							|	validSysPath	|						*/
-//																		//
-/*							   - configServ -							*/
+/*            		     Init Configuration				*/
+//									//
+/*			   |	   trim		|			*/
+/*			   |	 validNum	|			*/
+/*			   |     validPath	|			*/
+/*			   |    validMethod	|			*/
+/*			   |	validSysPath	|			*/
+//									//
+/*			       - configServ -				*/
 /*----------------------------------------------------------------------*/
 
 static void	trim(string *str) {
@@ -157,18 +157,18 @@ void	Server::configServ(const vector<pair<string, string> >& config) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            				 Check Configuration 						*/
-//																		//
-/*							|	 emptyOrNot		|						*/
-/*							|	  servName 		|						*/
-/*							|	    port 		|						*/
-/*							|    validlocs		|						*/
-/*							|	    locs 		|						*/
-/*							|    maxBodySize 	|						*/
-/*							|    cgiExtension 	|						*/
-/*							|    cgiHandlers 	|						*/
-//																		//
-/*							   - validServ -							*/
+/*            		    Check Configuration 			*/
+//									//
+/*			|	 emptyOrNot		|		*/
+/*			|	  servName 		|		*/
+/*			|	    port 		|		*/
+/*			|         validlocs		|		*/
+/*			|	    locs 		|		*/
+/*			|         maxBodySize	 	|		*/
+/*			|         cgiExtension 		|		*/
+/*			|         cgiHandlers 		|		*/
+//									//
+/*			         - validServ -				*/
 /*----------------------------------------------------------------------*/
 
 static void	emptyOrNot(const string& param, bool *corrupted) {
@@ -329,7 +329,7 @@ void	Server::validServ()	const {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Constructor Server								*/
+/*            		    Constructor Server				*/
 /*----------------------------------------------------------------------*/
 
 Server::Server(const vector<pair<string, string> >& config) {
@@ -338,7 +338,7 @@ Server::Server(const vector<pair<string, string> >& config) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Destructor Server								*/
+/*            		   Destructor Server				*/
 /*----------------------------------------------------------------------*/
 
 Server::~Server() {
