@@ -13,9 +13,9 @@
 #include "Request.hpp"
 
 /*----------------------------------------------------------------------*/
-/*            			Parsing & Init Request							*/
-//																		//
-/*						    - initRequest -								*/
+/*            		  Parsing & Init Request			*/
+//									//									//
+/*			      - initRequest -				*/
 /*----------------------------------------------------------------------*/
 
 void	Request::initRequest(const string& buffer) {
@@ -51,12 +51,12 @@ void	Request::initRequest(const string& buffer) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			   Request treatment							*/
-//																		//
-/*						  |	   fileResp 	|							*/
-/*						  |  directoryResp 	|							*/
-//																		//
-/*					    	 - treatment -								*/
+/*            		   Request treatment				*/
+//									//									//
+/*		     	|	fileResp 	|			*/
+/*			|     directoryResp 	|			*/
+//									//									//
+/*			      - treatment -				*/
 /*----------------------------------------------------------------------*/
 
 void	Request::fileResp(const Server& server) {
@@ -123,7 +123,7 @@ void Request::treatment(const string& method, const Server& server) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Constructor Request								*/
+/*            		  Constructor Request				*/
 /*----------------------------------------------------------------------*/
 
 Request::Request(const Server& server, const string& buffer, int clientFd) : _codeResp(0), _isFile(false), _respond(NULL) {
@@ -143,7 +143,7 @@ Request::Request(const Server& server, const string& buffer, int clientFd) : _co
 }
 
 /*----------------------------------------------------------------------*/
-/*            			Desstructor Request								*/
+/*            		  Destructor Request				*/
 /*----------------------------------------------------------------------*/
 
 Request::~Request() {
