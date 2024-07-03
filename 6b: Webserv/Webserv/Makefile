@@ -12,7 +12,7 @@ RESET   = \e[0m
 CURSIVE = \e[33;3m
 
 HEADERS = inc/colors.hpp inc/Html.hpp inc/Listen.hpp inc/Location.hpp inc/Request.hpp inc/Response.hpp inc/Server.hpp inc/Webserv.hpp
-SRCS    = src/Listen.cpp src/Request.cpp src/Response.cpp src/Server.cpp src/Webserv.cpp main.cpp
+SRCS    = src/Listen.cpp src/Request.cpp src/Server.cpp src/Webserv.cpp main.cpp
 OBJS    = $(SRCS:%.cpp=obj/%.o)
 
 all: directories $(NAME)

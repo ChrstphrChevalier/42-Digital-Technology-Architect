@@ -6,16 +6,16 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 09:35:37 by waziz             #+#    #+#             */
-/*   Updated: 2024/07/01 21:14:14 by waziz            ###   ########.fr       */
+/*   Updated: 2024/07/03 15:53:44 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Request.hpp"
 
 /*----------------------------------------------------------------------*/
-/*            		  Parsing & Init Request			*/
-//									//									//
-/*			      - initRequest -				*/
+/*            			Parsing & Init Request							*/
+//																		//
+/*						    - initRequest -								*/
 /*----------------------------------------------------------------------*/
 
 void	Request::initRequest(const string& buffer) {
@@ -51,12 +51,12 @@ void	Request::initRequest(const string& buffer) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            		   Request treatment				*/
-//									//									//
-/*		     	|	fileResp 	|			*/
-/*			|     directoryResp 	|			*/
-//									//									//
-/*			      - treatment -				*/
+/*            			   Request treatment							*/
+//																		//
+/*						  |	   fileResp 	|							*/
+/*						  |  directoryResp 	|							*/
+//																		//
+/*					    	 - treatment -								*/
 /*----------------------------------------------------------------------*/
 
 void	Request::fileResp(const Server& server) {
@@ -93,11 +93,14 @@ void Request::treatment(const string& method, const Server& server) {
 				_URi = "var/www/.index.html";
 				_codeResp = 301;
 			}
+			_isFile = true;
 			_respond = new Response(_codeResp, server.getName(), extFile(_URi), fileSize(_URi), _URi);
 			return ;
 		}
-		if (_URi == "WebCris" || _URi == "WebCed")
+		if (_URi == "WebCris")
 			_URi = server.getRoot();
+		if (_URi == "www")
+			_URi = "var/www";
 		if (!validPath(_URi)) {
 			_URi = server.getRoot() + "/" + _URi;
 			if (!validPath(_URi))
@@ -123,7 +126,7 @@ void Request::treatment(const string& method, const Server& server) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            		  Constructor Request				*/
+/*            			Constructor Request								*/
 /*----------------------------------------------------------------------*/
 
 Request::Request(const Server& server, const string& buffer, int clientFd) : _codeResp(0), _isFile(false), _respond(NULL) {
@@ -132,18 +135,30 @@ Request::Request(const Server& server, const string& buffer, int clientFd) : _co
 	cout << "(" << PURP << "client_fd" << RST << " : " << YLLW << clientFd << RST << ")";
 	cout << GRY1 << ITAL << " for " << BLUE << server.getName() << RST << CYAN << "." << RST << endl;
 	
+	// cout << buffer << endl;
+
 	initRequest(buffer);
+
+	// cout << LIME << "REQUEST RECEIVED : " << RST << _URi << endl;
+	
 	treatment(_method, server);
+	
+	// ostringstream oss;
+	// oss << _codeResp;
+	// cout << oss.str();
+	// cout << endl;
 
 	// cout << "RESPONSE" << endl;
-	// if (_isFile)
-	// 	cout << _respond->getHeader() << _respond->getFile() << endl;
+	// if (_isFile) {
+	// 	cout << _respond->getHeader();
+	// 	cout << _respond->getFile() << endl;
+	// }
 	// else
 	// 	cout << _respond->getResp() << endl;
 }
 
 /*----------------------------------------------------------------------*/
-/*            		  Destructor Request				*/
+/*            			Desstructor Request								*/
 /*----------------------------------------------------------------------*/
 
 Request::~Request() {

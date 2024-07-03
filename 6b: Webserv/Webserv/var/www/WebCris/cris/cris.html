@@ -6,7 +6,7 @@
     <title>WebCris 42</title>
     <style>
         body {
-            background-color: #333;
+            background-color: #d0e7f9;
             color: #f2f2f2;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -20,30 +20,31 @@
         h1 {
             font-size: 48px;
             margin-bottom: 20px;
-            color: #87CEEB; /* Bleu ciel */
+            color: #2f4f4f;
             text-align: center;
         }
 
         p {
             font-size: 20px;
             margin-bottom: 10px;
+			color: #808080;
             text-align: center;
         }
 
         .container {
             width: 80%;
             max-width: 800px;
-            border: 1px solid #87CEEB; /* Bleu ciel */
+            border: 1px solid #00e1ff;
             border-radius: 10px;
             padding: 40px;
-            background-color: #222;
+            background-color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Centrer le contenu de l'encadré */
-            position: relative; /* Positionnement relatif pour les liens */
+            text-align: center;
+            position: relative;
         }
 
         .link {
-            color: #87CEEB; /* Bleu ciel */
+            color: #0077be;
             text-decoration: none;
         }
 
@@ -55,25 +56,25 @@
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            margin-top: 20px; /* Espacement au-dessus de l'image */
+            margin-top: 20px;
         }
 
         .bottom-left {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            color: #00e1ff; /* Bleu turquoise */
+            color: #6699CC;
             text-decoration: none;
-            z-index: 1; /* Assure que le lien est au-dessus du contenu */
+            z-index: 1;
         }
 
         .bottom-right {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            color: #00e1ff; /* Bleu turquoise */
+            color: #6699CC;
             text-decoration: none;
-            z-index: 1; /* Assure que le lien est au-dessus du contenu */
+            z-index: 1;
         }
     </style>
 </head>
@@ -85,12 +86,9 @@
         <p><a class="link" href="https://github.com/ChrstphrChevalier/42Cursus" target="_blank">- CrisBlog -</a></p>
 		<img src="cris.png" alt="Cris's Image" onerror="this.style.display='none';">
 		<p><a class="link" href="../kapouet/summary.html" onclick="return !this.href.includes('undefined')">- Summary -</a></p>
+		<a class="bottom-left link" href="hated.html" onclick="return !this.href.includes('undefined')">- hated</a>
+		<a class="bottom-right link" href="favorite.html" onclick="return !this.href.includes('undefined')">favorite -</a>
 	</div>
 </div>
-
-    <!-- Liens bas gauche et bas droit -->
-    <a class="bottom-left" href="hated.html" onclick="return !this.href.includes('undefined')"><- hated</a>
-    <a class="bottom-right" href="favorite.html" onclick="return !this.href.includes('undefined')">favorite -></a>
 </body>
 </html>
-

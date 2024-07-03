@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 13:02:31 by waziz             #+#    #+#             */
-/*   Updated: 2024/07/01 20:51:54 by waziz            ###   ########.fr       */
+/*   Updated: 2024/07/03 23:21:08 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 volatile sig_atomic_t Sig = 0;
 
 /*----------------------------------------------------------------------*/
-/*            		   Socket Initialisation			*/
-//									//
-/*			   |   socketOptions 	|			*/
-/*			   |   bindAndListen	|			*/
-//									//
-/*			     - createSockets -				*/
+/*            			Socket Initialisation							*/
+//																		//
+/*						|	socketOptions 	|							*/
+/*						|	bindAndListen	|							*/
+//																		//
+/*						  - createSockets -								*/
 /*----------------------------------------------------------------------*/
 
 static void	socketOptions(int socket_fd, bool *isValid) {
@@ -112,9 +112,9 @@ void	Listen::createSockets(const vector<Server>& servers) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            		  KQUEUE Initialisation				*/
-//									//
-/*			     - initKqueue -				*/
+/*            			KQUEUE Initialisation							*/
+//																		//
+/*							- initKqueue -								*/
 /*----------------------------------------------------------------------*/
 
 void Listen::initKqueue() {
@@ -138,10 +138,10 @@ void Listen::initKqueue() {
 }
 
 /*----------------------------------------------------------------------*/
-/*            		    Signal Gestion				*/
-/*									*/
-/*				 signal 				*/
-/*			      setup_signal				*/
+/*            				Signal Gestion								*/
+/*																		*/
+/*								signal 									*/
+/*							 setup_signal								*/
 /*----------------------------------------------------------------------*/
 
 void Listen::signal(int sig) {
@@ -161,13 +161,13 @@ void Listen::setup_signal() {
 }
 
 /*----------------------------------------------------------------------*/
-/*            		      Event Gestion	 			*/
-//									//
-/*			 |	addClient	|			*/
-/*			 |    recept_request	|			*/
-/*			 |     send_response	|			*/
-//									//
-/*				  - run -				*/
+/*            				Event Gestion	 							*/
+//																		//
+/*						|	  addClient		|							*/
+/*						|	recept_request	|							*/
+/*						|	send_response	|							*/
+//																		//
+/*							   - run -									*/
 /*----------------------------------------------------------------------*/
 
 int	Listen::addClient(int *ev_fd, int *mem_fd) {
@@ -177,20 +177,20 @@ int	Listen::addClient(int *ev_fd, int *mem_fd) {
 	int client_fd = accept((*ev_fd), (struct sockaddr*)&client_addr, &client_len);
 	if (client_fd < 0) {
 		cout << REDD << "Error on accept" << RST << endl;
-		return (0);
+		return (-1);
 	}
 
 	int flags = fcntl(client_fd, F_GETFL, 0);
 	if (flags < 0) {
 		cout << REDD << "Error getting client_fd flags" << RST << endl;
 		close(client_fd);
-		return (0);
+		return (-1);
 	}
 
 	if (fcntl(client_fd, F_SETFL, flags | O_NONBLOCK) < 0) {
 		cout << REDD << "Error setting client_fd to non-blocking" << RST << endl;
 		close(client_fd);
-		return (0);
+		return (-1);
 	}
 
 	cout << CYAN << ITAL << "New connection" << RST << GRY1 << " -> " LIME << "accepted" << RST;
@@ -218,10 +218,13 @@ void	Listen::recept_request(int ev_fd, int mem_fd, map<int, string>& req_buffer,
 	memset(buffer, 0, sizeof(buffer));
 	ssize_t bytesRead = read(ev_fd, buffer, sizeof(buffer) - 1);
 	if (bytesRead < 0) {
-		cout << "Error reading from client_fd" << endl;
+		Html err = Html("Error reading from client_fd");
+		istringstream *i500 = new istringstream(err.get500());
+		ifstream *if500 = new ifstream();
+		rs.insert(make_pair(ev_fd, make_pair(i500, if500)));
+
 		req_buffer.erase(ev_fd);
 		req_length.erase(ev_fd);
-		close(ev_fd);
 	} else if (bytesRead == 0) {
 		cout << PURP << "client_fd" << RST << GRY1 << " : ";
 		cout << YLLW << ev_fd << GRY1 << " -> " << REDD << "disconnected" << RST << endl;
@@ -291,7 +294,9 @@ void	Listen::send_response(int ev_fd, map<int, pair<istringstream*, ifstream*> >
     if (bytes_read > 0) {
         ssize_t bytes_written = write(ev_fd, buffer, bytes_read);
         if (bytes_written < 0) {
-            cerr << "Error writing to client_fd" << endl;
+			Html err = Html("Error writing to client_fd");
+			string err500 = err.get500();
+			write(ev_fd, err500.data(), err500.size());
             rs.erase(ev_fd);
             close(ev_fd);
             return;
@@ -333,7 +338,7 @@ void Listen::run() {
 
 			if (ev_list[i].filter == EVFILT_READ) {
 				if (find(_sockets.begin(), _sockets.end(), ev_fd) != _sockets.end()) {
-					if (addClient(&ev_fd, &mem_fd) == 0 )
+					if (addClient(&ev_fd, &mem_fd) == -1)
 						continue ;
 				} else
 					recept_request(ev_fd, mem_fd, req_buffer, req_length, rs);
@@ -354,7 +359,7 @@ void Listen::run() {
 }
 
 /*----------------------------------------------------------------------*/
-/*            		    Constructor Listen				*/
+/*            			Constructor Listen								*/
 /*----------------------------------------------------------------------*/
 
 Listen::Listen(const vector<Server>& servers) : _req(NULL) {
@@ -365,7 +370,7 @@ Listen::Listen(const vector<Server>& servers) : _req(NULL) {
 }
 
 /*----------------------------------------------------------------------*/
-/*            		    Desstructor Listen				*/
+/*            			Desstructor Listen								*/
 /*----------------------------------------------------------------------*/
 
 Listen::~Listen() {

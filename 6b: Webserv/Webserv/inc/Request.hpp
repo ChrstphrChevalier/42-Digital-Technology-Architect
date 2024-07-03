@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:26:10 by waziz             #+#    #+#             */
-/*   Updated: 2024/07/01 20:49:44 by waziz            ###   ########.fr       */
+/*   Updated: 2024/07/03 12:41:40 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ class Request {
 				map<string, Location>::const_iterator it = locations.find(directory);
 				if (it != locations.end()) {
 					const vector<string>& methods = it->second.getMethods();
-					if (find(methods.begin(), methods.end(), _method) != methods.end())
+					if (find(methods.begin(), methods.end(), _method) != methods.end()) {
 						return true;
+					}
 				}
 			}
 			return false;
@@ -98,10 +99,10 @@ class Request {
 			for (map<string, Location>::const_iterator it = location.begin(); it != location.end(); it++)
 				if (it->first == "error") {
 					_errorPath = it->second.getPath();
-			
+
 					ostringstream oss;
 					oss << codeResp;
-					_errorPath = _errorPath + oss.str() + ".html";
+					_errorPath = _errorPath + '/' + oss.str() + ".html";
 					if (validPath(_errorPath) && !isEmpty(_errorPath))
 						return true;
 			}

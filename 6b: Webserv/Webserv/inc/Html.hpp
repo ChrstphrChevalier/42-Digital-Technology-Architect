@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 22:30:35 by waziz             #+#    #+#             */
-/*   Updated: 2024/07/01 21:06:18 by waziz            ###   ########.fr       */
+/*   Updated: 2024/07/03 23:20:06 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,27 @@ class Html {
 		map<int, string>	_codeResp;
 		map<int, string>	_errPage;
 
+		string				_500;
+
 	public:
 		Html() {
 			Extensions();
 			CodeResp();
 			ErrPage();
 		}
+
+		Html(const string& msg) {
+			Extensions();
+			CodeResp();
+			ErrPage();
+
+			string body = err500(500, msg);
+			string header = generateHeader(500, "Webserv", ".html", body.size());
+			_500 = header + body;
+		}
+
+		const string&	get500() const { return _500; }
+
 		~Html() {
 			_extensions.clear();
 			_codeResp.clear();
@@ -35,11 +50,11 @@ class Html {
 		}
 
 	/*----------------------------------------------------------------------*/
-	/*            			Init Html				*/
-	//									//
-	/*			|	Extensions  	|			*/
-	/*			|	 CodeResp	|			*/
-	/*			|	  ErrPage 	|			*/
+	/*            				  Init Html									*/
+	//																		//
+	/*						|	 Extensions  	|							*/
+	/*						|	  CodeResp		|							*/
+	/*						|	   ErrPage 		|							*/
 	/*----------------------------------------------------------------------*/
 
 		void	Extensions() {
@@ -63,6 +78,7 @@ class Html {
 			_extensions[".avi"] = "video/x-msvideo";
 			_extensions[".mpeg"] = "video/mpeg";
 			_extensions[".webm"] = "video/webm";
+			_extensions[".webp"] = "image/webp";
 			_extensions[".csv"] = "text/csv";
 			_extensions[".xhtml"] = "application/xhtml+xml";
 		}
@@ -120,7 +136,7 @@ class Html {
 		}
 
 	/*----------------------------------------------------------------------*/
-	/*            		  Error Page Construction			*/
+	/*            			Error Page Construction							*/
 	/*----------------------------------------------------------------------*/
 
 		string generateErrPage(int errorCode, const string& name) const {
@@ -174,12 +190,97 @@ class Html {
 			return html;
 		}
 
+string err500(int errorCode, const string& msg) const {
+    ostringstream oss;
+    oss << errorCode;
+    string errCode = oss.str();
+
+    string html;
+    html += "<!DOCTYPE html>\n";
+    html += "<html lang=\"en\">\n";
+    html += "<head>\n";
+    html += "    <meta charset=\"UTF-8\">\n";
+    html += "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    html += "    <title>" + errCode + "</title>\n";
+    html += "    <style>\n";
+    html += "        body {\n";
+    html += "            background-color: #f8f8f8; /* Blanc cassé ou beige très clair */\n";
+    html += "            color: #f2f2f2;\n";
+    html += "            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n";
+    html += "            margin: 0;\n";
+    html += "            padding: 20px;\n";
+    html += "        }\n";
+    html += "        h1 {\n";
+    html += "            font-size: 48px;\n";
+    html += "            margin-bottom: 20px;\n";
+    html += "            color: #fff; /* Blanc */\n";
+    html += "            text-align: center;\n";
+    html += "        }\n";
+    html += "        p {\n";
+    html += "            font-size: 20px;\n";
+    html += "            margin-bottom: 10px;\n";
+    html += "            text-align: justify;\n";
+    html += "            text-align-last: center;\n";
+    html += "        }\n";
+    html += "        .container {\n";
+    html += "            max-width: 800px;\n";
+    html += "            margin: 0 auto;\n";
+    html += "            border: 1px solid #ff0000; /* Rouge */\n";
+    html += "            border-radius: 10px;\n";
+    html += "            padding: 40px;\n";
+    html += "            background-color: #222;\n";
+    html += "            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n";
+    html += "            text-align: center; /* Centrer le contenu de l'encadré */\n";
+    html += "        }\n";
+    html += "        .link {\n";
+    html += "            color: #87CEEB; /* Bleu ciel */\n";
+    html += "            text-decoration: none;\n";
+    html += "        }\n";
+    html += "        .link:hover {\n";
+    html += "            text-decoration: underline;\n";
+    html += "        }\n";
+    html += "        .container img {\n";
+    html += "            max-width: 100%;\n";
+    html += "            height: auto;\n";
+    html += "            border-radius: 10px;\n";
+    html += "            margin-top: 20px; /* Espacement au-dessus de l'image */\n";
+    html += "        }\n";
+    html += "        .outside-img {\n";
+    html += "            display: block;\n";
+    html += "            max-width: 100%;\n";
+    html += "            height: auto;\n";
+    html += "            margin: 20px auto; /* Centrer l'image */\n";
+    html += "        }\n";
+    html += "        .red-text {\n";
+    html += "            color: #ff0000; /* Rouge */\n";
+    html += "        }\n";
+    html += "        .signature {\n";
+    html += "            color: #D74630; /* Orange sanguine */\n";
+    html += "            font-family: 'Brush Script MT', cursive; /* Police attachée */\n";
+    html += "            font-style: italic;\n";
+    html += "            font-size: 18px;\n";
+    html += "            margin-top: 10px;\n";
+    html += "        }\n";
+    html += "    </style>\n";
+    html += "</head>\n";
+    html += "<body>\n";
+    html += "    <div class=\"container\">\n";
+    html += "        <h1>" "ERROR " + errCode + "</h1>\n";
+    html += "        <p class=\"red-text\">Internal Server Error</p>\n";
+    html += "        <p class=\"signature\">" + msg + ". . ." + "</p>\n";
+    html += "    </div>\n";
+    html += "</body>\n";
+    html += "</html>\n";
+
+    return html;
+}
+
 	/*----------------------------------------------------------------------*/
-	/*            		       Create Header				*/
-	//									//
-	/*			       |   Date   |				*/
-	//									//
-	/*			     - generateHeader - 			*/
+	/*            			   Create Header								*/
+	//																		//
+	/*						   	|   Date   |								*/
+	//																		//
+	/*						 - generateHeader - 							*/
 	/*----------------------------------------------------------------------*/
 
 string Date() const {
@@ -208,17 +309,22 @@ string Date() const {
 			string cL = oss.str();
 
 			string cR;
+			string cT;
 
 			map<int, string>::const_iterator it = _codeResp.find(codeResp);
 			if (it != _codeResp.end())
 				cR = it->second;
+
+			map<string, string>::const_iterator itt = _extensions.find(extension);
+			if (itt != _extensions.end())
+				cT = itt->second;
 
 			string header;
 
 			header += cR + "\r\n";    
 			header += "Date: " + Date() + "\r\n";
 			header += "Server:" + name + "\r\n";
-			header += "Content-Type: " + _extensions.at(extension) + "\r\n";
+			header += "Content-Type: " + cT + "\r\n";
 			header += "Content-Length: " + cL + "\r\n";
 			header += "Connection: close\r\n";
 			header += "\r\n";
@@ -227,11 +333,11 @@ string Date() const {
 		}
 
 	/*----------------------------------------------------------------------*/
-	/*            		      Create Listing				*/
-	//									//
-	/*			       |   Css   |				*/
-	//									//
-	/*			     - generateListing - 			*/
+	/*            			   Create Listing								*/
+	//																		//
+	/*						   	|   Css   |									*/
+	//																		//
+	/*						 - generateListing - 							*/
 	/*----------------------------------------------------------------------*/
 
 		string Css() const {
@@ -239,7 +345,7 @@ string Date() const {
 			
 			css += "<style>\n";
 			css += "    body {\n";
-			css += "        background-color: #333;\n";
+			css += "        background-color: #d0e7f9;\n";
 			css += "        color: #f2f2f2;\n";
 			css += "        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n";
 			css += "        margin: 0;\n";
@@ -247,30 +353,21 @@ string Date() const {
 			css += "        text-align: center; /* Centrer le texte dans le corps */\n";
 			css += "    }\n";
 			css += "    .container {\n";
-			css += "        max-width: 800px;\n";
+			css += "        max-width: 250px;\n";
 			css += "        margin: 0 auto;\n";
-			css += "        border: 1px solid #87CEEB; /* Bleu ciel */\n";
+			css += "        border: 1px solid #40e0d0;\n";
 			css += "        border-radius: 10px;\n";
 			css += "        padding: 40px;\n";
-			css += "        background-color: #222;\n";
+			css += "        background-color: rgba(255, 255, 255, 0.9);\n";
 			css += "        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n";
 			css += "        text-align: left; /* Aligner le texte à gauche dans le container */\n";
 			css += "        position: relative; /* Pour positionner les éléments enfants */\n";
 			css += "    }\n";
-			css += "    .separator {\n";
-			css += "        position: absolute;\n";
-			css += "        top: 50%; /* Déplacer le trait à la moitié de la hauteur */\n";
-			css += "        left: 50%; /* Déplacer le trait à la moitié de la largeur */\n";
-			css += "        transform: translate(-50%, -50%); /* Centrer le trait */\n";
-			css += "        width: 50%; /* Largeur du trait à 50% de la largeur du container */\n";
-			css += "        height: 1px; /* Hauteur du trait */\n";
-			css += "        background-color: #f2f2f2; /* Blanc cassé */\n";
-			css += "    }\n";
 			css += "    h1 {\n";
 			css += "        font-size: 48px;\n";
 			css += "        margin-bottom: 20px;\n";
-			css += "        color: #00e1ff; /* Bleu turquoise */\n";
-			css += "        text-align: center; /* Centrer le titre */\n";
+			css += "        color: #2f4f4f;\n";
+			css += "        text-align: center;\n";
 			css += "    }\n";
 			css += "    ul {\n";
 			css += "        list-style-type: none;\n";
@@ -279,10 +376,10 @@ string Date() const {
 			css += "    }\n";
 			css += "    li {\n";
 			css += "        margin-bottom: 10px;\n";
-			css += "        text-align: center; /* Centrer les éléments de la liste */\n";
+			css += "        text-align: center;\n";
 			css += "    }\n";
 			css += "    a {\n";
-			css += "        color: #00e1ff; /* Bleu turquoise pour tous les liens */\n";
+			css += "        color: #f2f2f2;\n";
 			css += "        text-decoration: none;\n";
 			css += "    }\n";
 			css += "    a:hover {\n";
@@ -292,15 +389,17 @@ string Date() const {
 			css += "        font-weight: bold;\n";
 			css += "    }\n";
 			css += "    .file {\n";
-			css += "        color: #f2f2f2;\n";
+			css += "        color: #ADD8E6;\n";
+			css += "        font-style: italic;\n";
 			css += "    }\n";
 			css += "    .directory {\n";
-			css += "        color: #00e1ff; /* Bleu turquoise pour les répertoires */\n";
+			css += "        color: #0077be;\n";
 			css += "    }\n";
 			css += "    .path {\n";
-			css += "        color: #f2f2f2; /* Blanc cassé pour le chemin */\n";
-			css += "        text-align: center; /* Centrer le chemin */\n";
-			css += "        margin-top: 20px; /* Espace au-dessus du chemin */\n";
+			css += "        color: #808080;\n";
+			css += "        text-align: center;\n";
+			css += "        margin-top: 20px;\n";
+			css += "        font-style: italic;\n";
 			css += "    }\n";
 			css += "</style>\n";
 
@@ -320,7 +419,7 @@ string Date() const {
 			string Dir = URi.substr(0, pos);
 
 			size_t parentPos = Dir.find_last_of('/');
-			string parentName = Dir.substr(parentPos + 1);
+			string parentName = Dir.substr(parentPos);
 
 			html += "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\">";
 			html += "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
@@ -330,23 +429,23 @@ string Date() const {
 
 			html += "<div class=\"container\">";
 			html += "<ul>";
-			html += "<li><a class=\"directory\" href=\"" + parentName + "\">>> Parent Directory <<</a></li>";
+			html += "<li><a class=\"directory\" href=\"" + parentName + "\"> Up </a></li>";
 			html += "</ul>";
 			html += "<h1>" + directory + "</h1>";
-			html += "<p class=\"path\">" + URi + "</p>";
-			html += "<div class=\"separator\"></div>";
 			html += "<br />";
 			html += "<ul>";
 
 			struct dirent* entry;
 			while ((entry = readdir(dir)) != NULL) {
 				if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) {
-					string entryPath = URi + "/" + entry->d_name;
+					string entryPath = "/" + URi + "/" + entry->d_name;
 					string linkClass = (entry->d_type == DT_DIR) ? "directory" : "file";
 					html += "<li><a class=\"" + linkClass + "\" href=\"" + entryPath + "\">" + entry->d_name + "</a></li>";
 				}
 			}
 
+			html += "<br />";
+			html += "<p class=\"path\">" + URi + "</p>";
 			html += "</ul>";
 			html += "</div>";
 
