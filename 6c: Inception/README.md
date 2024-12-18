@@ -1,7 +1,5 @@
 # <p align="center"> ![image](https://github.com/user-attachments/assets/7bd2a1d8-f006-4fe3-8235-37a5cd7e573e) </p>
 
-#### <p align="center"> - [VIEW PROJECT](https://github.com/aceyzz/Webserv) - </p>
-
 ##### <p align="center"> *As part of my journey at École 42, I participated in the Inception project, a challenge to set up a complete infrastructure with Docker. This project allowed me to dive into the world of containerization, using Docker to automate the deployment of a technical stack composed of several interconnected services.* </p>
 
 ##### <p align="center"> *During this project, I learned how to create Dockerfiles to configure containers efficiently and to use docker-compose to orchestrate services. I configured and deployed a web server with NGINX, a MariaDB database, and a WordPress CMS, ensuring that each service was isolated while communicating smoothly through a Docker network.* </p>
