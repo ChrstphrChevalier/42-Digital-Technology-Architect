@@ -2,7 +2,7 @@
 
 # <p align="center"> - Group Work - </p>
 
-#### <p align="center"> *TEAMMATE :* [Cedric Muller](https://github.com/aceyzz) / [Eric](https://github.com/esrch) </p>
+#### <p align="center"> *TEAMMATE :* [Cedric Muller](https://github.com/aceyzz) / [Eric Rabbath](https://github.com/esrch) </p>
 
 #### <p align="center"> - [VIEW PROJECT](https://github.com/aceyzz/ft_transcendence) - </p>
 
@@ -16,6 +16,6 @@
 
 # <p align="center"> - Result - </p>
 
-# <p align="center">  </p>
+# <p align="center"> ![image](https://github.com/user-attachments/assets/3da40f89-c463-4936-a92c-b90f5979288e) </p>
 
 # <p align="center"> - #*next* - </p>
