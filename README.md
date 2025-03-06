@@ -51,5 +51,3 @@
 #### <p align="center"> *In short, the School 42 course was a real challenge that tested not only my technical skills, but also my resilience, my ability to learn independently, and my ability to work in a team. I came away greatly transformed and better prepared for future challenges in the field of programming and software engineering.* </p>
 
 # <p align="center">    </p>
-
-# <p align="center"> [![waziz's 42 stats](https://badge.mediaplus.ma/binary/waziz?1337Badge=off&UM6P=off)](https://github.com/oakoudad/badge42) </p>
