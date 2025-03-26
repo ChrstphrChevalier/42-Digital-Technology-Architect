@@ -2,6 +2,16 @@
 
 ## <p align="center"> Tronc Commun 42 </p>
 
+### Aperçu
+
+Le tronc commun de l'école 42 est une formation intensive et complète qui couvre un large éventail de compétences en programmation, développement système, algorithmie et administration. Il vise à former des développeurs polyvalents et autonomes, capables de résoudre des problèmes complexes à travers l'utilisation de technologies modernes, notamment en **C**, **C++**, et dans des environnements **Unix/Linux**.
+
+Les principaux objectifs sont l'acquisition de compétences solides en gestion de la mémoire, manipulation des structures de données, optimisation des algorithmes, ainsi que la maîtrise des systèmes embarqués et du développement réseau. La formation inclut également des notions de **programmation orientée objet (OOP)** avec **C++**, ainsi que des compétences en **développement web** (API REST, WebSocket, sécurité) et **DevOps** (Docker, CI/CD). Les étudiants sont également formés à la gestion de processus, à la synchronisation multithread, et à la configuration des réseaux et systèmes.
+
+Ce tronc commun se distingue par son approche pratique, l'accent mis sur le travail en autonomie, et la **collaboration en peer-to-peer**, où les étudiants s'entraident, échangent des idées et résolvent des problèmes ensemble. Cette méthode permet de développer des compétences en communication et en travail d'équipe tout en offrant la liberté de résoudre des problèmes réels et d'optimiser les solutions en termes de performances et de sécurité.
+
+---
+
 ### Compétences Acquises
 
 #### Programmation C
@@ -68,3 +78,6 @@
 #### Tests et Validation
 - **Tests Unitaires et d'Intégration** : Création de tests unitaires, tests d'intégration pour valider le bon fonctionnement du code.
 - **Validation de Fonctionnalités** : Mise en place de tests pour valider les interactions entre services et composants du système.
+
+---
+
