@@ -1,20 +1,30 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/593d7e68-3b71-41fe-9992-8b6058da9283) </p>
 
-##### <p align="center"> *As part of my career at school 42, I worked on the So Long project, a project which allowed me to create a small 2D game using the MiniLibX graphics library. This project provided me with a great opportunity to apply my programming skills while exploring game development and graphics management concepts.* </p>
+## <p align="center"> so_long - Jeu 2D en C avec MiniLibX </p>
 
-##### <p align="center"> *The key notions that I acquired during this project include the manipulation of graphic libraries. Using MiniLibX, I learned how to create a window, handle keyboard and mouse events, and draw images on the screen. This gave me a practical understanding of how graphics libraries work and how they can be used to create interactive user interfaces.* </p>
+### Aperçu
+**so_long** est un projet graphique de l'école 42 visant à créer un jeu 2D simple en langage C, utilisant la bibliothèque **MiniLibX**. Le joueur doit collecter des objets et atteindre une sortie dans une carte définie par un fichier `.ber`, avec des contraintes comme des murs et un chemin valide. Ce projet m’a permis de maîtriser la **programmation graphique**, le **parsing de fichiers**, la **gestion d’événements**, et l’**algorithmie**, tout en respectant les normes strictes de 42.
 
-##### <p align="center"> *A crucial aspect of So Long was managing the game loop. I learned to structure my code to handle updates and renders on an ongoing basis, ensuring the game remained responsive and fluid. This experience helped me understand basic concepts of game engines.* </p>
+### Compétences acquises
+- **Programmation C** : Pointeurs, allocation dynamique (`malloc`, `free`), gestion mémoire, structures de données.
+- **Graphisme 2D** : MiniLibX, rendu d’images, sprites, fenêtres, pixels.
+- **Algorithmie** : Parsing de maps, validation de chemins (pathfinding), flood fill, logique de jeu.
+- **Gestion d’événements** : Inputs clavier (key hooks), gestion de la fermeture, interactions utilisateur.
+- **Débogage** : `valgrind`, `gdb`, memory leaks, segmentation faults, edge cases.
 
-##### <p align="center"> *Additionally, I learned file manipulation skills by reading and analyzing map files to generate the game's levels. I learned to read text files, interpret their contents, and use that data to create dynamic game levels. This allowed me to strengthen my skills in file processing and data management.* </p>
+### Partie obligatoire
+- **Parsing de carte** : Lecture fichier `.ber`, validation (murs, joueur, sortie, collectibles).
+- **Rendu graphique** : Affichage de la map (murs, sol, joueur, objets) via MiniLibX.
+- **Gameplay** : Déplacements (WASD ou flèches), collecte d’objets, victoire/défaite.
+- **Gestion des erreurs** : Carte invalide, fichier corrompu, fermeture propre.
 
-##### <p align="center"> *The project also taught me the importance of collision handling and game logic. I had to implement mechanisms to detect and handle collisions between the player character and level elements, as well as to handle game objectives, such as collecting items and navigating to the exit.* </p>
+### Bonus (facultatif)
+- **Fonctionnalités avancées** : Compteur de mouvements, animations (sprites), ennemis.
+- **Interface** : Affichage HUD (score, messages), mini-map.
+- **Optimisation** : Pathfinding avancé (BFS, DFS), gestion fluide des frames.
 
-##### <p align="center"> *In addition, I developed skills in optimization and resource management. Working with graphics and animation presented me with performance challenges, and I learned how to optimize my code to ensure the game ran smoothly, even with limited resources.* </p>
-
-##### <p align="center"> *The So Long project also allowed me to practice modular programming and code structuring. I segmented my program into separate modules for event handling, graphics rendering, and game logic, which improved the readability and maintainability of my code.* </p>
-
-##### <p align="center"> *In summary, the So Long project offered me a valuable immersion in game development and graphics management. The skills learned during this project, such as manipulation of graphics libraries, game loop management, and collision logic, are essential for any developer interested in developing games or interactive user interfaces. These skills continue to serve me well in my later projects, where I am often required to design and implement interactive and graphically rich systems.* </p>
+### Pourquoi ce projet est pertinent
+**so_long** illustre mes compétences en programmation graphique, gestion de projets, algorithmie appliquée, et développement de jeux. Il est pertinent pour des domaines comme le game development, les interfaces graphiques, les systèmes embarqués, ou les applications nécessitant un rendu visuel et une interaction utilisateur. Ce projet met en avant ma capacité à concevoir des solutions créatives, fiables, et performantes.
 
 # <p align="center">    </p>
 
