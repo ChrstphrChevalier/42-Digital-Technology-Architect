@@ -1,18 +1,22 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/6e904dda-2f6b-4f12-b5aa-72c28d4216df) </p>
 
-##### <p align="center"> *As part of my career at school 42, I worked on the ft_printf project, an enriching experience which allowed me to recreate the printf function of the standard C library. This project was a real challenge, but it gave me a deep understanding of variadic functions and string formatting.* </p>
+## <p align="center"> ft_printf - Recréation de la fonction printf en C </p>
 
-##### <p align="center"> *The key concepts I learned during this project include the use of variadic macros in C, such as va_start, va_arg and va_end. These macros allowed me to handle variable-length argument lists, an essential skill for implementing a flexible and robust version of printf.* </p>
+### Aperçu
+**ft_printf** est un projet emblématique de l'école 42 qui vise à recréer la fonction `printf` de la bibliothèque standard C. L'objectif est de concevoir une version personnalisée capable de gérer différents formats d’affichage (comme les chaînes, les entiers, les hexadécimaux, etc.) tout en respectant des spécifications précises. Ce projet m’a permis de approfondir ma maîtrise du C, de la gestion des entrées variables avec `va_arg`, et de l’optimisation des performances dans un contexte de manipulation de chaînes.
 
-##### <p align="center"> *I also learned how to handle string formatting in detail, replicating standard format specifiers such as %d, %s, %x, and many others. This helped me understand how to convert and display different data types (integers, strings, hex, etc.) accurately and efficiently.* </p>
+### Compétences acquises
+- **Maîtrise avancée du C** : Utilisation des arguments variables (`va_list`, `va_arg`), gestion des pointeurs et manipulation fine des chaînes.
+- **Conception algorithmique** : Développement d’une logique modulaire pour traiter divers spécificateurs de format (`%d`, `%s`, `%x`, etc.).
+- **Débogage complexe** : Résolution de problèmes liés à la conversion de données et vérification avec `valgrind` pour éviter les fuites de mémoire.
+- **Respect des normes** : Conformité aux exigences strictes de 42, incluant un code propre, lisible et sans dépendances externes non autorisées.
 
-##### <p align="center"> *The project also required me to work on fine-grained memory management, dynamically allocating and freeing memory according to the needs of different formatting operations. I developed a better understanding of the low-level aspects of the C language, particularly regarding the manipulation of pointers and memory buffers.* </p>
+### Partie obligatoire
+- Gestion des spécificateurs de base : `%c` (caractère), `%s` (chaîne), `%d`/`%i` (entiers décimaux), `%u` (entier non signé).
+- Support des conversions hexadécimales : `%x` (minuscules), `%X` (majuscules).
+- Affichage des pointeurs : `%p` (adresse mémoire au format hexadécimal).
+- Gestion du caractère spécial : `%%` (affichage du pourcentage).
 
-##### <p align="center"> *Additionally, I learned to write modular and reusable code, segmenting different parts of printf into smaller, specific functions. This improved the readability and maintainability of my code.* </p>
-
-##### <p align="center"> *The ft_printf project also taught me the importance of exhaustive unit testing. I created a battery of tests to verify that each format specifier worked correctly and ensure that my implementation handled all edge cases correctly.* </p>
-
-##### <p align="center"> *In short, this project allowed me to consolidate my skills in C programming, particularly in handling variadic functions and string formatting. He taught me to be thorough and precise in my approach to programming, essential qualities for any developer. The lessons learned from ft_printf continue to accompany me in my subsequent projects, helping me to approach complex problems with a structured and efficient methodology.* </p>
 
 # <p align="center"> - Result - </p>
 
