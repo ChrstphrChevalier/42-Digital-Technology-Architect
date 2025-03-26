@@ -18,7 +18,7 @@
 - **Communication** : Utilisation de `SIGUSR1` (0) et `SIGUSR2` (1), protocole simple.
 - **Gestion des erreurs** : Vérification PID, gestion des interruptions, robustesse.
 
-### Bonus (optionnel, si implémenté)
+### Bonus (facultatif)
 - **Confirmation** : Accusé de réception (ACK) via signaux bidirectionnels.
 - **Unicode** : Support des caractères étendus, encodage complexe.
 - **Performance** : Buffering, optimisation de la vitesse de transmission.
