@@ -1,22 +1,25 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/6e904dda-2f6b-4f12-b5aa-72c28d4216df) </p>
 
-## <p align="center"> ft_printf - Recréation de la fonction printf en C </p>
+## <p align="center"> ft_printf - Recréation avancée de printf en C </p>
 
 ### Aperçu
-**ft_printf** est un projet emblématique de l'école 42 qui vise à recréer la fonction `printf` de la bibliothèque standard C. L'objectif est de concevoir une version personnalisée capable de gérer différents formats d’affichage (comme les chaînes, les entiers, les hexadécimaux, etc.) tout en respectant des spécifications précises. Ce projet m’a permis de approfondir ma maîtrise du C, de la gestion des entrées variables avec `va_arg`, et de l’optimisation des performances dans un contexte de manipulation de chaînes.
+**ft_printf** est un projet phare de l'école 42 visant à recréer la fonction `printf` de la libc en langage C. Cette implémentation personnalisée gère le formatage de chaînes, la conversion de données, et l’affichage avec des spécificateurs variés (`%d`, `%s`, `%x`, etc.). Ce projet m’a permis de maîtriser les **arguments variables** (`va_list`, `va_arg`), la **gestion de mémoire**, le **parsing**, et l’**optimisation** dans un contexte de programmation bas niveau, tout en respectant les normes strictes de 42.
 
 ### Compétences acquises
-- **Maîtrise avancée du C** : Utilisation des arguments variables (`va_list`, `va_arg`), gestion des pointeurs et manipulation fine des chaînes.
-- **Conception algorithmique** : Développement d’une logique modulaire pour traiter divers spécificateurs de format (`%d`, `%s`, `%x`, etc.).
-- **Débogage complexe** : Résolution de problèmes liés à la conversion de données et vérification avec `valgrind` pour éviter les fuites de mémoire.
-- **Respect des normes** : Conformité aux exigences strictes de 42, incluant un code propre, lisible et sans dépendances externes non autorisées.
+- **Programmation C avancée** : Pointeurs, allocation dynamique (`malloc`, `free`), manipulation de chaînes, arguments variables.
+- **Algorithmie** : Parsing de formats, conversion numérique (décimal, hexadécimal), gestion des spécificateurs.
+- **Optimisation des performances** : Buffer management, minimisation des appels système, efficacité.
+- **Débogage** : `valgrind`, `gdb`, détection de memory leaks, segmentation faults, edge cases.
+- **Normes et modularité** : Code normé (42 Norm), lisibilité, réutilisabilité, robustesse.
 
 ### Partie obligatoire
-- Gestion des spécificateurs de base : `%c` (caractère), `%s` (chaîne), `%d`/`%i` (entiers décimaux), `%u` (entier non signé).
-- Support des conversions hexadécimales : `%x` (minuscules), `%X` (majuscules).
-- Affichage des pointeurs : `%p` (adresse mémoire au format hexadécimal).
-- Gestion du caractère spécial : `%%` (affichage du pourcentage).
+- **Spécificateurs de base** : `%c` (caractère), `%s` (chaîne), `%d`/`%i` (entiers décimaux), `%u` (unsigned int).
+- **Conversions hexadécimales** : `%x` (minuscules), `%X` (majuscules), base 16.
+- **Pointeurs** : `%p` (adresse mémoire, format hexadécimal avec préfixe `0x`).
+- **Caractère spécial** : `%%` (échappement pourcentage).
 
+### Pourquoi ce projet est pertinent
+**ft_printf** illustre mes compétences en programmation bas niveau, gestion de données complexes, parsing avancé, et optimisation de code. Il est directement applicable à des domaines comme le développement système, les logiciels embarqués, les compilateurs, ou toute application nécessitant un formatage précis et une performance élevée. Ce projet met en avant ma capacité à produire un code fiable, efficace, et testable sous contraintes strictes.
 
 # <p align="center"> - Result - </p>
 
