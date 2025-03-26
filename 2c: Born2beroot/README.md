@@ -1,18 +1,30 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/7cde36da-1c43-477b-b23c-1ee0a58631a2) </p>
 
-##### <p align="center"> *As part of my career at school 42, I had the opportunity to work on the BonR2beroot project, a significant step in my learning of UNIX systems and server administration. This project immersed me in the world of IT infrastructures, allowing me to configure and secure a dedicated server while understanding the ins and outs of the different technologies used.* </p>
+## <p align="center"> Born2BeRoot - Configuration d’un serveur Linux sécurisé </p>
 
-##### <p align="center"> *The key concepts that I acquired during this project are vast. First, I learned how to install and configure a Linux operating system, understanding the different distributions available and choosing the one that best suits my needs. I also learned essential system administration skills, such as managing users and permissions, and configuring network services.* </p>
+### Aperçu
+**Born2BeRoot** est un projet système de l'école 42 visant à configurer un **serveur virtuel** sous **Linux** (Debian ou CentOS) via une **machine virtuelle** (VirtualBox). Ce projet m’a permis de maîtriser l’**administration système**, la **sécurisation**, la **gestion des utilisateurs**, et l’**automatisation** avec des scripts shell, tout en respectant des contraintes strictes. Il simule un environnement réel de **gestion de serveur**, incluant **SSH**, **firewall**, et **monitoring**.
 
-##### <p align="center"> *A crucial aspect of this project was safety. I learned how to configure a firewall to protect my server from external attacks, as well as how to implement robust security policies to ensure data integrity and confidentiality. Understanding the concepts of encryption and SSL/TLS certificate management was particularly important in this context.* </p>
+### Compétences acquises
+- **Administration système** : Installation OS, partitionnement, configuration réseau, gestion des paquets (`apt`).
+- **Sécurité** : Politiques de mots de passe, SSH sécurisé (clé RSA, port personnalisé), UFW (firewall), sudo sécurisé.
+- **Scripting** : Bash, automatisation, cron jobs, monitoring système (CPU, RAM, disque).
+- **Virtualisation** : VirtualBox, VM setup, snapshot, configuration hardware virtuelle.
+- **Débogage et optimisation** : Logs système, diagnostic, performance, résolution de problèmes.
 
-##### <p align="center"> *Additionally, I explored in depth how network services work, setting up services like SSH, HTTP, and DNS on my server. This allowed me to understand the role of each service in an IT infrastructure and gain a holistic view of how they interact to provide complex functionality.* </p>
+### Partie obligatoire
+- **Installation Linux** : Debian/CentOS, partitionnement (LVM), bootloader (GRUB).
+- **Configuration réseau** : SSH (port non standard, clé publique/privée), hostname, IP statique.
+- **Sécurisation** : UFW (firewall rules), sudo (logs, restrictions), politique de mots de passe (expiration, complexité).
+- **Monitoring** : Script bash pour surveiller CPU, mémoire, disque, utilisateurs connectés.
 
-##### <p align="center"> *The BonR2beroot project also presented me with system resource management challenges, such as monitoring server performance and optimizing configurations to ensure efficient use of available resources. I learned how to use monitoring tools like Nagios and Grafana to track server performance in real time and implement optimization solutions to improve overall system performance.* </p>
+### Bonus (facultatif)
+- **Services avancés** : Serveur web (Nginx/Apache), base de données (MySQL), FTP.
+- **Hardening** : AppArmor/SELinux, fail2ban, protection DDoS, chroot.
+- **Automatisation poussée** : Ansible, Docker, backup automatisé.
 
-##### <p align="center"> *Finally, I developed valuable skills in automation and scripting, writing Bash scripts to automate repetitive tasks and simplify daily server management. This ability to automate processes has allowed me to gain efficiency and productivity in the management of my IT infrastructures.* </p>
-
-##### <p align="center"> *In summary, the BonR2beroot project offered me a deep dive into the world of system administration and IT security. The skills acquired during this project are essential for any professional working in the field of IT infrastructures, and continue to serve me in my subsequent projects where I am required to design, deploy and maintain complex and secure infrastructures.* </p>
+### Pourquoi ce projet est pertinent
+**Born2BeRoot** illustre mes compétences en administration système, sécurité informatique, virtualisation, et scripting shell. Il est directement applicable à des rôles comme administrateur système, DevOps, ingénieur réseau, ou sécurité serveur dans des environnements cloud, Linux, ou infrastructure IT. Ce projet met en avant ma capacité à configurer un système fiable, sécurisé, et performant sous contraintes.
 
 # <p align="center">      </p>
 
