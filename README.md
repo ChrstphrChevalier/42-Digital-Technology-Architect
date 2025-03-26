@@ -81,3 +81,12 @@ Ce tronc commun se distingue par son approche pratique, l'accent mis sur le trav
 
 ---
 
+### Pourquoi ce cursus est pertinent
+
+Le tronc commun de l'école 42 est un tremplin idéal pour ma carrière, car il me permet de renforcer mes compétences en programmation, notamment en **C** et **C++**, et de maîtriser des environnements **Unix/Linux**, qui sont des compétences clés dans le domaine de l'IT. Ce cursus m’a offert l’opportunité de travailler sur des projets pratiques qui simulent des défis réels rencontrés en entreprise, me permettant ainsi de développer une approche pragmatique du développement logiciel, de l'optimisation des algorithmes, et de la gestion de la mémoire.
+
+La formation m'a permis de compléter mes compétences en **Développement Web** (API REST, WebSocket, sécurité) et en **DevOps** (Docker, CI/CD), domaines essentiels pour rester compétitif sur le marché. Elle m'a aussi aidé à acquérir une expertise en **réseautage** et **administration système**, me donnant une vision globale des enjeux technologiques et des besoins actuels des entreprises.
+
+Ce cursus est d’autant plus pertinent pour moi qu’il met l’accent sur l’apprentissage en **autonomie** et la **collaboration peer-to-peer**. Travailler avec d’autres développeurs et partager des idées m'a permis de développer des compétences en **communication** et en **travail d’équipe**, qui sont des atouts essentiels pour un environnement de travail agile. Grâce à cette approche, j'ai pu affiner ma capacité à résoudre des problèmes complexes tout en optimisant mes solutions en termes de **performance** et de **sécurité**, ce qui est essentiel dans le domaine du cloud et de la cybersécurité où je souhaite me spécialiser.
+
+L’école 42 m’a offert un environnement unique pour me préparer à intégrer des entreprises de renom et m’a permis de développer une solide base technique, ainsi qu’une approche méthodique et indépendante de résolution de problèmes. C’est un réel tremplin pour réussir dans le secteur de l’informatique, avec un programme qui correspond parfaitement à mes ambitions professionnelles.
