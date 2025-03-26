@@ -1,14 +1,28 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/9a79f80c-aae9-4940-a1b5-4a220a987981) </p>
 
-##### <p align="center"> *As part of my time at School 42, I worked on the Net Practice project, an enriching experience which allowed me to develop an in-depth understanding of computer networks and communication protocols. This project offered me a unique opportunity to apply my theoretical knowledge in a practical context, by confronting myself with real network configuration and troubleshooting situations.* </p>
+## <p align="center"> NetPractice - Configuration réseau et TCP/IP en pratique </p>
 
-##### <p align="center"> *The key notions that I acquired during this project include the fundamental concepts of IP networks. I learned how to configure and manage IP addresses, understand the distinction between IPv4 and IPv6, and manipulate subnetting. This experience allowed me to understand how IP addresses are assigned and used to enable communication between different devices on a network.* </p>
+### Aperçu
+**NetPractice** est un projet d’administration système de l'école 42 conçu pour explorer les fondamentaux du **réseautage** à travers la configuration de petits réseaux utilisant le protocole **TCP/IP**. Ce projet m’a permis de maîtriser les **adresses IP**, les **masques de sous-réseau**, les **routeurs**, les **switches**, et les **tables de routage**, tout en résolvant des problèmes pratiques sur une interface d’entraînement interactive, respectant les normes strictes de 42 (code et logique normés).
 
-##### <p align="center"> *Additionally, I learned network troubleshooting skills. The project presented me with various network outage scenarios that I had to diagnose and resolve. This ability to diagnose and resolve network problems is essential to ensuring the reliability and availability of computer networks.* </p>
+### Compétences acquises
+- **Réseautage** : Configuration réseau, adressage IP, subnetting, routage, interconnexion.
+- **Protocoles** : TCP/IP, IPv4, gestion des ports, encapsulation, transmission de paquets.
+- **Administration système** : Switches, routeurs, hubs, interfaces réseau, passerelles.
+- **Calculs réseau** : Masques de sous-réseau, CIDR, plages d’adresses, conversion binaire.
+- **Débogage** : Diagnostic réseau, résolution de conflits IP, optimisation de la connectivité.
 
-##### <p align="center"> *The project also taught me the importance of network security. This security awareness helped me understand the challenges of protecting networks from attacks and intrusions.* </p>
+### Partie obligatoire
+- **Configuration IP** : Attribution d’adresses IP statiques, masques (ex. `/24`, `/18`), plages valides.
+- **Routage** : Tables de routage, next hop, passerelle par défaut (`0.0.0.0/0`), routage inter-réseaux.
+- **Niveaux** : 10 exercices progressifs, connexion de clients, switches, routeurs, Internet simulé.
+- **Validation** : Vérification de la communication (ping virtuel), résolution d’erreurs réseau.
+- **Concepts avancés** : Sous-réseaux multiples, VLAN, adressage dynamique, loopback.
+- **Simulation** : Analyse de paquets, configuration multi-interfaces, routage complexe.
+- **Outils** : Compréhension de Wireshark, traceroute, simulation réseau approfondie.
 
-##### <p align="center"> *In summary, the Net Practice project allowed me to develop an in-depth understanding of computer networks, communications protocols and network equipment management. The skills learned during this project, such as configuring network equipment, troubleshooting connectivity issues, and implementing security measures, are essential for any professional working in the field of networks and IT infrastructure. These skills continue to serve me well in my later projects, where I am often required to design, configure and maintain reliable and secure networks.* </p>
+### Pourquoi ce projet est pertinent
+**NetPractice** illustre mes compétences en administration réseau, configuration TCP/IP, résolution de problèmes réseau, et compréhension des protocoles. Il est pertinent pour des rôles comme administrateur réseau, ingénieur système, DevOps, ou tout projet nécessitant une connectivité fiable et une gestion optimisée des infrastructures. Ce projet met en avant ma capacité à analyser et résoudre des défis réseau efficaces, précis, et testables.
 
 # <p align="center">     </p>
 
