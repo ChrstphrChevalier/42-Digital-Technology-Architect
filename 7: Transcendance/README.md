@@ -3,9 +3,7 @@
 ## <p align="center"> Transcendence - Application Web Full-Stack avec Docker </p>
 
 ### Aperçu  
-**Transcendence** est un projet full-stack de l’école 42 qui consiste à développer une application web complète, sécurisée et conteneurisée, en utilisant NestJS (backend), React (frontend) et une base de données PostgreSQL, le tout orchestré avec Docker et déployé de manière robuste.  
-
-Ce projet m’a permis d’acquérir des compétences avancées en **développement web**, **authentification sécurisée (OAuth2, JWT, 2FA)**, **temps réel avec WebSockets**, et **déploiement DevOps**, tout en respectant les **meilleures pratiques d’architecture logicielle**.
+**Transcendence** est un projet full-stack de l’école 42 qui consiste à développer une application web complète, sécurisée et conteneurisée, en utilisant NestJS (backend), React (frontend) et une base de données PostgreSQL, le tout orchestré avec Docker et déployé de manière robuste. Ce projet m’a permis d’acquérir des compétences avancées en développement web, authentification sécurisée (OAuth2, JWT, 2FA), temps réel avec WebSockets, et déploiement DevOps, tout en respectant les meilleures pratiques d’architecture logicielle.
 
 ### Compétences acquises  
 - **Développement Web** : Frontend (**React, TypeScript, TailwindCSS**), Backend (**NestJS, Node.js, Express**).  
