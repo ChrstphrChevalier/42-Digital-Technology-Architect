@@ -1,24 +1,39 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/0fa93075-29af-4d6e-8a55-d0e99bffeba2) </p>
 
+## <p align="center"> Webserv - Serveur HTTP personnalisé en C++ </p>
+
+### Aperçu
+**Webserv** est un projet réseau avancé de l'école 42 visant à implémenter un **serveur HTTP** fonctionnel en **C++**, capable de gérer des requêtes **HTTP/1.1**, servir des fichiers statiques, et exécuter des scripts CGI. Ce projet m’a permis de maîtriser la **programmation réseau**, les **sockets**, la **gestion asynchrone**, et les **protocoles web**, tout en respectant les normes strictes de 42 (code C++ normé, C++98).
+
+### Compétences acquises
+- **Programmation C++** : Classes, objets, gestion mémoire (`new`, `delete`), exceptions, STL.
+- **Réseautage** : Sockets TCP, bind, listen, accept, multiplexing (`select`, `poll`, `epoll`).
+- **Protocole HTTP** : Requêtes (GET, POST, DELETE), réponses (status codes, headers), parsing.
+- **Gestion asynchrone** : I/O non bloquant, multi-clients, gestion des connexions simultanées.
+- **CGI** : Exécution de scripts (PHP, Python), pipes, fork, environnement CGI.
+- **Débogage** : `valgrind`, `gdb`, memory leaks, segmentation faults, race conditions.
+
+### Partie obligatoire
+- **Serveur HTTP** : Gestion des requêtes GET/POST, envoi de fichiers statiques (HTML, CSS, images).
+- **Configuration** : Parsing fichier `.conf` (ports, routes, root, error pages).
+- **Multiplexing** : Gestion multi-clients via `select` ou équivalent, connexions persistantes.
+- **Codes d’état** : 200 OK, 404 Not Found, 403 Forbidden, 500 Internal Server Error.
+
+### Bonus (Facultatif)
+- **Fonctionnalités avancées** : Upload de fichiers, DELETE method, sessions, cookies.
+- **Performance** : Multithreading, keep-alive, optimisation des E/S réseau.
+- **Sécurité** : Headers sécurisés, gestion des timeouts, protection contre les attaques simples.
+
+### Pourquoi ce projet est pertinent
+**Webserv** illustre mes compétences en programmation réseau, gestion de serveurs, traitement asynchrone, et développement web backend. Il est pertinent pour des rôles comme ingénieur réseau, développeur backend, DevOps, ou tout projet nécessitant une infrastructure web performante et une communication client-serveur fiable. Ce projet met en avant ma capacité à concevoir des solutions robustes, efficaces, et testables.
+
+# <p align="center">     </p>
+
 # <p align="center"> - Group Work - </p>
 
 #### <p align="center"> *TEAMMATE :* [Cedric Muller](https://github.com/aceyzz) </p>
 
 #### <p align="center"> - [VIEW PROJECT](https://github.com/aceyzz/Webserv) - </p>
-
-##### <p align="center"> *As part of my career at school 42, I undertook the Webserv project, an immersive experience in the development of a web server in C++. This project immersed me in the heart of web technologies, confronting me with the implementation of HTTP/1.1 and HTTP/2 protocols as well as the management of requests and responses.* </p>
-
-##### <p align="center"> *The key concepts that I acquired during this project are vast. I learned how to manipulate sockets and understand their crucial role in communication between the server and clients. I also explored the design and implementation of a routing system to direct HTTP requests to the appropriate resources, while supporting handling of HTTP URIs and methods.* </p>
-
-##### <p align="center"> *Additionally, this project introduced me to the nuances of thread management and concurrency in the context of a web server. I studied synchronization mechanisms to ensure safe and efficient handling of concurrent connections, while keeping server performance at an optimal level.* </p>
-
-##### <p align="center"> *A major aspect of this project was the exploration of HTTP request parsing mechanisms. I developed skills in parsing and extracting relevant information from HTTP headers, while handling cases of malformed or erroneous requests in a robust manner.* </p>
-
-##### <p align="center"> *Finally, the Webserv project made me aware of the security aspects related to the development of web applications. I learned how to implement input filtering and validation mechanisms to prevent injection attacks and other vulnerabilities, thereby increasing the robustness and reliability of my server.* </p>
-
-##### <p align="center"> *The most valuable lesson I took away from this project was the importance of modular design and code structure. I learned to separate different server functionalities into distinct modules, thus promoting reusability, maintainability and testability of the code.* </p>
-
-##### <p align="center"> *In summary, the Webserv project offered me a deep dive into the complex world of web server development. The skills acquired, particularly in socket manipulation, request analysis and security, are essential for any web developer wishing to create robust and efficient web applications. This project consolidated my understanding of web technologies and prepared me to take on new challenges in the field of web development.* </p>
 
 # <p align="center">     </p>
 
