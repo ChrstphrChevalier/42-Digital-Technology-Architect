@@ -1,6 +1,6 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/593d7e68-3b71-41fe-9992-8b6058da9283) </p>
 
-## <p align="center"> so_long - Jeu 2D en C avec MiniLibX </p>
+## <p align="center"> So_long - Jeu 2D en C avec MiniLibX </p>
 
 ### Aperçu
 **so_long** est un projet graphique de l'école 42 visant à créer un jeu 2D simple en langage C, utilisant la bibliothèque **MiniLibX**. Le joueur doit collecter des objets et atteindre une sortie dans une carte définie par un fichier `.ber`, avec des contraintes comme des murs et un chemin valide. Ce projet m’a permis de maîtriser la **programmation graphique**, le **parsing de fichiers**, la **gestion d’événements**, et l’**algorithmie**, tout en respectant les normes strictes de 42.
