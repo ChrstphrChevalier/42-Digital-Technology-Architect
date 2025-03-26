@@ -1,6 +1,6 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/af74e6ec-2d5b-440c-8afa-e0acc18093ea) </p>
 
-## <p align="center"> CPP Modules - Fondations de la programmation en C++ (École 42) </p>
+## <p align="center"> CPP Modules - Fondations de la programmation en C++ </p>
 
 ### Aperçu
 Les **CPP Modules** de l'école 42 sont une série de projets progressifs (00 à 09) conçus pour enseigner les bases et les concepts avancés de la programmation en **C++**. Ces modules couvrent l’**orienté objet**, les **templates**, la **gestion mémoire**, les **conteneurs STL**, et les **exceptions**, tout en respectant les normes strictes de 42 (code normé). Ce parcours m’a permis de maîtriser le **C++ moderne** (C++98 à C++11), la **conception logicielle**, et les **bonnes pratiques** de développement.
