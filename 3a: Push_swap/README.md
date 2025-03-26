@@ -1,18 +1,25 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/e33c8da2-80a0-4267-939f-56686fdba212) </p>
 
-##### <p align="center"> *As part of my time at School 42, I worked on the Push Swap project, an exciting exercise that allowed me to delve into sorting and stack manipulation algorithms. This project offered me a unique opportunity to improve my algorithmic and optimization skills.* </p>
+## <p align="center"> Push_swap - Algorithme de tri optimisé en C </p>
 
-##### <p align="center"> *The key concepts that I acquired during this project include the understanding and implementation of different sorting algorithms. I explored simple sorting methods like selection sort, as well as more advanced and optimized techniques adapted to the specific constraints of the project. This helped me develop a solid understanding of the basic principles of sorting algorithms and their performance.* </p>
+### Aperçu
+**Push_swap** est un projet algorithmique de l'école 42 visant à trier une pile de nombres entiers en utilisant deux stacks (**stack A** et **stack B**) et un ensemble limité d’opérations (push, swap, rotate, reverse rotate). Ce projet m’a permis de maîtriser les **algorithmes de tri**, les **structures de données**, l’**optimisation des performances**, et la **résolution de problèmes complexes**, tout en respectant les normes strictes de 42 (code C normé).
 
-##### <p align="center"> *A key aspect of Push Swap was the manipulation of data structures, particularly stacks. I learned how to implement stacks using linked lists, which strengthened my skills in dynamic memory management and pointer manipulation. I also had to design functions to perform stack operations, such as "push" and "swap", efficiently.* </p>
+### Compétences acquises
+- **Algorithmie** : Tri (sorting), optimisation, complexité temporelle (O(n²), O(n log n)), greedy algorithms.
+- **Programmation C** : Pointeurs, allocation dynamique (`malloc`, `free`), gestion mémoire, parsing d’arguments.
+- **Structures de données** : Stacks, piles, tableaux dynamiques, listes chaînées (optionnel).
+- **Optimisation** : Minimisation des opérations, efficacité, performance, benchmarking.
+- **Débogage** : `valgrind`, `gdb`, memory leaks, segmentation faults, edge cases.
 
-##### <p align="center"> *The project also taught me the importance of optimization. To minimize the number of moves needed to sort a stack, I had to analyze and optimize my algorithms, taking into account factors like time and space complexity. This approach made me aware of the importance of efficiency in programming, especially when dealing with large amounts of data.* </p>
+### Partie obligatoire
+- **Opérations de base** : `sa/sb` (swap), `pa/pb` (push), `ra/rb` (rotate), `rra/rrb` (reverse rotate).
+- **Tri simple** : Algorithme pour petites tailles (3-5 nombres), insertion, sélection.
+- **Tri complexe** : Algorithme optimisé pour grandes tailles (100-500 nombres), quicksort, radix sort, pivot.
+- **Output** : Séquence d’instructions minimale, format standard, exécutable `push_swap`.
 
-##### <p align="center"> *Additionally, I developed debugging and testing skills. Working with sorting algorithms and complex data structures presented me with various challenges, and I learned how to use debugging tools to identify and fix errors in my code. I also implemented rigorous testing to ensure that my algorithms worked correctly in all possible cases, including edge cases.* </p>
-
-##### <p align="center"> *The Push Swap project also taught me how to write modular and reusable code. By segmenting my code into well-defined functions and using appropriate data structures, I was able to improve the readability and maintainability of my program. This modular approach is essential for the development of robust and scalable software.* </p>
-
-##### <p align="center"> *In summary, the Push Swap project allowed me to consolidate my skills in algorithms, optimization and manipulation of data structures. The lessons learned from this subsequent project will be useful to me in my subsequent projects, where I am often required to design and implement efficient algorithms to solve complex problems.* </p>
+### Pourquoi ce projet est pertinent
+**Push_swap** illustre mes compétences en algorithmie, optimisation de code, gestion de structures de données, et programmation bas niveau. Il est pertinent pour des domaines comme le développement logiciel, les systèmes embarqués, les compétitions de programmation, ou tout projet nécessitant des solutions efficaces et performantes. Ce projet met en avant ma capacité à concevoir des algorithmes fiables, rapides, et testables.
 
 # <p align="center">    </p>
 
