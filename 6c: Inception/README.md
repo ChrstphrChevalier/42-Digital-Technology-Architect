@@ -1,18 +1,27 @@
 # <p align="center"> ![image](https://github.com/user-attachments/assets/7bd2a1d8-f006-4fe3-8235-37a5cd7e573e) </p>
 
-##### <p align="center"> *As part of my journey at École 42, I participated in the Inception project, a challenge to set up a complete infrastructure with Docker. This project allowed me to dive into the world of containerization, using Docker to automate the deployment of a technical stack composed of several interconnected services.* </p>
+## <p align="center"> Inception - Infrastructure Docker multi-conteneurs </p>
 
-##### <p align="center"> *During this project, I learned how to create Dockerfiles to configure containers efficiently and to use docker-compose to orchestrate services. I configured and deployed a web server with NGINX, a MariaDB database, and a WordPress CMS, ensuring that each service was isolated while communicating smoothly through a Docker network.* </p>
+### Aperçu
+**Inception** est un projet DevOps de l'école 42 visant à déployer une **infrastructure virtualisée** utilisant **Docker** pour orchestrer une stack complète : un serveur web (**Nginx**), une base de données (**MariaDB**), et une application (**WordPress**), le tout dans des conteneurs interconnectés. Ce projet m’a permis de maîtriser la **conteneurisation**, la **gestion de réseaux Docker**, la **configuration système**, et les **bonnes pratiques DevOps**, tout en respectant les normes strictes de 42.
 
-##### <p align="center"> *One of the key skills I developed during this project was managing Docker volumes for data persistence. I learned how to configure volumes to reliably store database data and website files, while ensuring their availability even after a container restart.* </p>
+### Compétences acquises
+- **Docker** : Conteneurs, images, Dockerfile, docker-compose, orchestration, volumes.
+- **Réseautage** : Réseaux Docker, ports, bridge, interconnexion, mapping réseau.
+- **Administration système** : Configuration Linux, fichiers de config, gestion des services.
+- **DevOps** : Automatisation, déploiement, CI/CD, scalabilité, monitoring.
+- **Sécurité** : Certificats TLS/SSL, variables d’environnement, gestion des accès.
+- **Débogage** : Logs Docker, diagnostic conteneurs, résolution de conflits réseau.
 
-##### <p align="center"> *One of the major challenges I faced was managing SSL certificates and setting up a secure connection using NGINX and TLS protocols. This deepened my understanding of security best practices for web deployments.* </p>
+### Partie obligatoire
+- **Nginx** : Serveur web, reverse proxy, configuration HTTPS, gestion des requêtes.
+- **WordPress** : Application PHP, installation automatisée, connexion à MariaDB.
+- **MariaDB** : Base de données relationnelle, persistance des données, utilisateurs/permissions.
+- **Docker Compose** : Fichier `docker-compose.yml`, orchestration multi-services, volumes partagés.
+- **Volumes et réseaux** : Persistance (data MariaDB, fichiers WordPress), réseau interne.
 
-##### <p align="center"> *In addition, the project gave me a better understanding of Docker networks and their role in communicating between different containers. I designed an internal network to connect containers in isolation from the rest of the infrastructure, while configuring ports to allow access to the necessary services.* </p>
-
-##### <p align="center"> *Finally, this project taught me the importance of error handling and resilience. I implemented automatic restart strategies to ensure the stability of the infrastructure, as well as logging mechanisms to monitor and quickly diagnose problems.* </p>
-
-##### <p align="center"> *In summary, the Inception project gave me valuable experience in container management, complex infrastructure deployment, and web application security. The skills acquired are essential for working on modern cloud infrastructure and automated deployment projects, and have prepared me to take on new challenges in systems development and administration.* </p>
+### Pourquoi ce projet est pertinent
+**Inception** illustre mes compétences en conteneurisation, orchestration Docker, administration réseau, et déploiement DevOps. Il est pertinent pour des rôles comme ingénieur DevOps, administrateur système, architecte cloud, ou tout projet nécessitant une infrastructure scalable, une automatisation robuste, et une sécurité moderne. Ce projet met en avant ma capacité à concevoir des solutions fiables, performantes, et testables.
 
 # <p align="center">     </p>
 
