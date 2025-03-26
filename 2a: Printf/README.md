@@ -21,6 +21,8 @@
 ### Pourquoi ce projet est pertinent
 **ft_printf** illustre mes compétences en programmation bas niveau, gestion de données complexes, parsing avancé, et optimisation de code. Il est directement applicable à des domaines comme le développement système, les logiciels embarqués, les compilateurs, ou toute application nécessitant un formatage précis et une performance élevée. Ce projet met en avant ma capacité à produire un code fiable, efficace, et testable sous contraintes strictes.
 
+# <p align="center">  </p>
+
 # <p align="center"> - Result - </p>
 
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/96b530e2-bd78-42e0-a54f-855a43dc04a3) </p>
