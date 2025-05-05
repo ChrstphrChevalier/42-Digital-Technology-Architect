@@ -46,7 +46,7 @@ Le module **CPP01** approfondit la manipulation des **références**, **pointeur
 
 ##
 
-### Pourquoi ce projet est pertinent
+### Pourquoi ce module est pertinent
 
 **CPP01** renforce la compréhension des **comportements mémoire bas niveau** du C++ : allocation dynamique, références, destruction. Il jette les bases pour une gestion propre de ressources, prépare aux patterns RAII, et apprend à structurer des **classes robustes** avec des comportements cohérents.
 
