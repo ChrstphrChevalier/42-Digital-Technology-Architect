@@ -36,7 +36,7 @@ Le module **CPP02** est dédié à l’implémentation d’un **type numérique 
 
 ##
 
-### Pourquoi ce projet est pertinent
+### Pourquoi ce module est pertinent
 
 **CPP02** est une étape clé dans la compréhension de la **programmation orientée objet appliquée à des types mathématiques**. Il mêle bas niveau (bit-shifting, arithmétique entière) avec des concepts avancés comme **la surcharge d’opérateurs**, la **const-correctness**, et les **méthodes statiques**. Ce module forme à la robustesse, la précision et la lisibilité d’un type personnalisé — base future pour les classes numériques ou graphiques.
 
