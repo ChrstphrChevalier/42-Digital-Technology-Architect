@@ -37,7 +37,7 @@ Le module **CPP00** introduit les bases de la **programmation orientée objet en
 
 ##
 
-### Pourquoi ce projet est pertinent
+### Pourquoi ce module est pertinent
 
 **CPP00** pose les **fondations techniques du C++ moderne**. Il forme aux bases de la **programmation orientée objet**, à la **gestion d'entrée robuste** et à la **structuration logique du code en modules**. C’est une transition clé entre le C procédural et la rigueur du C++ orienté objet.
 
