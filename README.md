@@ -1,3 +1,34 @@
+
+| #  | Projet         | Description                                      | Langage(s) / Domaine       | Compétences clés                                   |
+|:--:|:---------------|:--------------------------------------------------|:---------------------------:|:--------------------------------------------------|
+| 01 | Libft          | Fonctions LibC personnalisées                     | C                           | Pointeurs, gestion mémoire, rigueur               |
+| 02 | GetNextLine    | Lecture ligne par ligne d’un fichier              | C                           | Lecture buffer, statique, file descriptor         |
+| 03 | Printf         | Réimplémentation de `printf()`                    | C                           | Parsing, va_arg, formatage                        |
+| 04 | Born2beroot    | Setup VM Linux, partitions, sudo, UFW...          | SysAdmin / Linux            | Bash, UFW, hostname, LVM                          |
+| 05 | Push Swap      | Algorithme de tri avec nombre min. d’opérations   | C                           | Tri, complexité, algo, stack                      |
+| 06 | So Long        | Mini-jeu 2D avec MLX                              | C / Graphisme               | MLX, parsing map, events clavier                  |
+| 07 | Minitalk       | Communication entre processus via signaux UNIX    | C / UNIX, IPC               | Signaux, bitwise, synchronisation                 |
+| 08 | Philosophers   | Problème des philosophes (threads, mutex)         | C / Concurrence             | Threads, mutex, race condition                    |
+| 09 | Minishell      | Mini shell UNIX (parsing, fork, exec...)          | C / Shell, UNIX             | Parsing, fork, execve, pipes, heredoc             |
+| 10 | NetPractice    | Résolution d’exercices sur les réseaux            | Réseaux                     | Subnetting, IP, routage                           |
+| 11 | Cube3D         | Moteur raycasting et moteur de rendu simple       | C / Graphisme               | Raycasting, textures, maths 2D                    |
+| 12 | CPP00          | Classes, objets, canonical form                   | C++                         | Constructeurs, OOP, syntaxe de base               |
+| 13 | CPP01          | Références, pointeurs, affectation                | C++                         | Références, heap/stack, opérateurs                |
+| 14 | CPP02          | Surcharge d’opérateurs, polymorphisme ad-hoc      | C++                         | Operator overloading, const                       |
+| 15 | CPP03          | Héritage, classes abstraites                      | C++                         | Inheritance, polymorphisme                        |
+| 16 | CPP04          | Interfaces, polymorphisme dynamique               | C++                         | Abstract classes, virtual functions               |
+| 17 | CPP05          | Exceptions, gestion d’erreurs                     | C++                         | Try/catch, throw, logique d’erreur                |
+| 18 | CPP06          | Casts explicites, types scalaires                 | C++                         | Casts (static, dynamic, etc.), types              |
+| 19 | CPP07          | Templates, conteneurs                             | C++                         | Templates, classes génériques                     |
+| 20 | CPP08          | Algorithmes STL, itérateurs                       | C++                         | STL, algorithmes, iterators                       |
+| 21 | CPP09          | Conteneurs personnalisés                          | C++                         | Containers, TAD, efficience                       |
+| 22 | Inception      | Docker, NGINX, WordPress, MariaDB                 | DevOps / Docker             | Docker, volumes, services                         |
+| 23 | Webserv        | Serveur HTTP en C++ (HTTP/1.1, CGI...)            | C++ / Web backend           | HTTP, socket, parser, multiclient                 |
+| 24 | Transcendance  | Application web temps réel (jeux, chat, auth)     | Django / JavaScript         | WebSocket, Auth, DB                               |
+
+
+
+
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/2a84ca36-fded-4fa0-86b8-b0e9675b8c8e) </p>
 
 ## <p align="center"> Tronc Commun 42 </p>
