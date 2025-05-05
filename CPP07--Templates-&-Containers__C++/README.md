@@ -1,43 +1,40 @@
 # <p align="center"> ![image](https://github.com/ChrstphrChevalier/42Cursus/assets/146819291/487c2433-6788-41ad-b998-9d45bb8fd0fd) </p>
 
-## <p align="center"> CPP07 - Classes et objets en C++ </p>
+## <p align="center"> CPP07 - Itérateurs et tableaux </p>
 
 ### Aperçu
 
-Le module **CPP07** se concentre sur les **classes**, la **gestion de la mémoire** dans les objets, et l'**encapsulation** en C++. Il traite de la création et de l'utilisation des **constructeurs**, des **destructeurs**, des **opérateurs de copie** et des **membres privés/publics**.
+Le module **CPP07** se concentre sur l'utilisation des **itérateurs** et des **tableaux** dans le langage C++. Il permet de comprendre comment manipuler les données dans des conteneurs comme les tableaux statiques ou dynamiques, tout en apprenant à utiliser les itérateurs pour parcourir et modifier ces structures.
 
 ##
 
 ### Compétences acquises
 
-- **Gestion des classes et objets** :
-  - Définition de classes avec constructeurs, destructeurs et opérateurs
-  - Encapsulation et visibilité des membres
-  - Opérateurs de copie et d'assignation
-- **Manipulation de la mémoire** :
-  - Allocation dynamique
-  - Gestion de la mémoire via le constructeur/destructeur
-- **Création de fonctions membres** pour gérer des objets internes
-- **Gestion des chaînes de caractères avec `std::string`**
+- **Manipulation des tableaux** :
+  - Utilisation de tableaux statiques et dynamiques
+  - Compréhension de la gestion de la mémoire pour les tableaux
+- **Itérateurs en C++** :
+  - Utilisation des itérateurs pour parcourir des conteneurs
+  - Utilisation d'itérateurs avec des containers comme les vecteurs, listes et tableaux
+- **Algorithmes standards** :
+  - Application d'algorithmes standard (par exemple `std::sort`) en utilisant des itérateurs
 
 ##
 
 ### Exercices principaux
 
-- **Class Contact (ex00)** :
-  - Création d'une classe `Contact` avec des attributs comme le nom, prénom, etc.
-  - Manipulation de ces objets dans une base de données limitée à 8 contacts
-  - Implémentation de méthodes pour ajouter, rechercher et afficher les contacts
-- **Class Account (ex01)** :
-  - Création de la classe `Account` pour gérer un compte bancaire simple avec des attributs comme le solde, le taux d'intérêt, etc.
-  - Suivi de l’évolution des comptes à travers des méthodes de dépôt, retrait et affichage
-  - Gestion des compteurs d'objets et de la synchronisation des opérations
+- **Itérateurs** :
+  - Implémentation d'un tableau générique et utilisation des itérateurs pour accéder aux éléments
+  - Affichage des éléments avec les itérateurs
+- **Array** :
+  - Manipulation de tableaux à l'aide de fonctions et itérateurs
+  - Implémentation de différents algorithmes comme le tri et la recherche dans un tableau
 
 ##
 
 ### Pourquoi ce module est pertinent
 
-Le module **CPP07** renforce la **compréhension des classes** en C++ et permet d'apprendre à gérer efficacement la **mémoire et les ressources** dans des systèmes orientés objet. Il est particulièrement utile pour comprendre la gestion des **ressources dynamiques** et l'importance des **opérateurs de copie et de destruction**.
+Le module **CPP07** est essentiel pour comprendre la manipulation des données dans des structures plus complexes. L'apprentissage des **itérateurs** et des **tableaux** permet d'optimiser la gestion de la mémoire et d'améliorer l'efficacité des programmes. C'est une compétence clé pour travailler avec des conteneurs en C++ et comprendre le fonctionnement interne des structures de données.
 
 ##
 
