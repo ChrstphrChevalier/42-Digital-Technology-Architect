@@ -15,8 +15,8 @@
 - **API REST & GraphQL** : Structuration des **endpoints, validation des données, communication entre services**.  
 
 ### Partie obligatoire  
-- **Frontend React** : Interface utilisateur dynamique, responsive, interactivité, API Fetch.  
-- **Backend NestJS** : Gestion des routes, API sécurisée, logique métier, WebSockets.  
+- **Frontend Javascript** : Interface utilisateur dynamique, responsive, interactivité, API Fetch.  
+- **Backend Django** : Gestion des routes, API sécurisée, logique métier, WebSockets.  
 - **PostgreSQL** : Base de données relationnelle, persistance des comptes utilisateurs et statistiques.  
 - **Authentification avancée** : **OAuth2 (42 API), JWT sécurisé, double authentification (2FA)**.  
 - **Docker & Docker Compose** : Conteneurisation du projet, orchestration multi-services, persistance des données.  
