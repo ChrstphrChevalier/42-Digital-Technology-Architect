@@ -1,30 +1,30 @@
 
 | #  | Projet         | Description                                      | Langage(s) / Domaine       | Compétences clés                                   |
 |:--:|:---------------|:--------------------------------------------------|:---------------------------:|:--------------------------------------------------|
-| 01 | Libft          | Fonctions LibC personnalisées                     | C                           | Pointeurs, gestion mémoire, rigueur               |
-| 02 | GetNextLine    | Lecture ligne par ligne d’un fichier              | C                           | Lecture buffer, statique, file descriptor         |
-| 03 | Printf         | Réimplémentation de `printf()`                    | C                           | Parsing, va_arg, formatage                        |
-| 04 | Born2beroot    | Setup VM Linux, partitions, sudo, UFW...          | SysAdmin / Linux            | Bash, UFW, hostname, LVM                          |
-| 05 | Push Swap      | Algorithme de tri avec nombre min. d’opérations   | C                           | Tri, complexité, algo, stack                      |
-| 06 | So Long        | Mini-jeu 2D avec MLX                              | C / Graphisme               | MLX, parsing map, events clavier                  |
-| 07 | Minitalk       | Communication entre processus via signaux UNIX    | C / UNIX, IPC               | Signaux, bitwise, synchronisation                 |
-| 08 | Philosophers   | Problème des philosophes (threads, mutex)         | C / Concurrence             | Threads, mutex, race condition                    |
-| 09 | Minishell      | Mini shell UNIX (parsing, fork, exec...)          | C / Shell, UNIX             | Parsing, fork, execve, pipes, heredoc             |
-| 10 | NetPractice    | Résolution d’exercices sur les réseaux            | Réseaux                     | Subnetting, IP, routage                           |
-| 11 | Cube3D         | Moteur raycasting et moteur de rendu simple       | C / Graphisme               | Raycasting, textures, maths 2D                    |
-| 12 | CPP00          | Classes, objets, canonical form                   | C++                         | Constructeurs, OOP, syntaxe de base               |
-| 13 | CPP01          | Références, pointeurs, affectation                | C++                         | Références, heap/stack, opérateurs                |
-| 14 | CPP02          | Surcharge d’opérateurs, polymorphisme ad-hoc      | C++                         | Operator overloading, const                       |
-| 15 | CPP03          | Héritage, classes abstraites                      | C++                         | Inheritance, polymorphisme                        |
-| 16 | CPP04          | Interfaces, polymorphisme dynamique               | C++                         | Abstract classes, virtual functions               |
-| 17 | CPP05          | Exceptions, gestion d’erreurs                     | C++                         | Try/catch, throw, logique d’erreur                |
-| 18 | CPP06          | Casts explicites, types scalaires                 | C++                         | Casts (static, dynamic, etc.), types              |
-| 19 | CPP07          | Templates, conteneurs                             | C++                         | Templates, classes génériques                     |
-| 20 | CPP08          | Algorithmes STL, itérateurs                       | C++                         | STL, algorithmes, iterators                       |
-| 21 | CPP09          | Conteneurs personnalisés                          | C++                         | Containers, TAD, efficience                       |
-| 22 | Inception      | Docker, NGINX, WordPress, MariaDB                 | DevOps / Docker             | Docker, volumes, services                         |
-| 23 | Webserv        | Serveur HTTP en C++ (HTTP/1.1, CGI...)            | C++ / Web backend           | HTTP, socket, parser, multiclient                 |
-| 24 | Transcendance  | Application web temps réel (jeux, chat, auth)     | Django / JavaScript         | WebSocket, Auth, DB                               |
+| 01 | [Libft](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Libft__Fonctions-LibC__%3AC)          | Fonctions LibC personnalisées                     | C                           | Pointeurs, gestion mémoire, rigueur               |
+| 02 | [GetNextLine](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/GetNextLine__LineReader__%3AC)    | Lecture ligne par ligne d’un fichier              | C                           | Lecture buffer, statique, file descriptor         |
+| 03 | [Printf](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Printf__PrintfClone__%3AC)         | Réimplémentation de `printf()`                    | C                           | Parsing, va_arg, formatage                        |
+| 04 | [Born2beroot](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Born2beroot__SecureBootConfig__%3ASysAdmin)    | Setup VM Linux, partitions, sudo, UFW...          | SysAdmin / Linux            | Bash, UFW, hostname, LVM                          |
+| 05 | [Push Swap](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/PushSwap__SortingAlgo__%3AC)      | Algorithme de tri avec nombre min. d’opérations   | C                           | Tri, complexité, algo, stack                      |
+| 06 | [So Long](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/SoLong__2DGame-byMLX__%3AC)        | Mini-jeu 2D avec MLX                              | C / Graphisme               | MLX, parsing map, events clavier                  |
+| 07 | [Minitalk](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Minitalk__Signaux-UNIX%3AIPC__%3AC)       | Communication entre processus via signaux UNIX    | C / UNIX, IPC               | Signaux, bitwise, synchronisation                 |
+| 08 | [Philosophers](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Philosopher__Concurrence-(Threads-Mutex)__%3AC)   | Problème des philosophes (threads, mutex)         | C / Concurrence             | Threads, mutex, race condition                    |
+| 09 | [Minishell](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Minishell__Shell__%3AC_%3ASyst%C3%A8mes-UNIX)      | Mini shell UNIX (parsing, fork, exec...)          | C / Shell, UNIX             | Parsing, fork, execve, pipes, heredoc             |
+| 10 | [NetPractice](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/NetPractice__Reseaux-Informatiques)    | Résolution d’exercices sur les réseaux            | Réseaux                     | Subnetting, IP, routage                           |
+| 11 | [Cube3D](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Cube3D__Raycasting3D__%3AC%20)         | Moteur raycasting et moteur de rendu simple       | C / Graphisme               | Raycasting, textures, maths 2D                    |
+| 12 | [CPP00](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP00__Classes-Objets-%26-Form__%3AC%2B%2B)          | Classes, objets, canonical form                   | C++                         | Constructeurs, OOP, syntaxe de base               |
+| 13 | [CPP01](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP01__R%C3%A9f%C3%A9rences-%26-Pointeurs__%3AC%2B%2B)          | Références, pointeurs, affectation                | C++                         | Références, heap/stack, opérateurs                |
+| 14 | [CPP02](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP02__Polymorphism-%26-Operators__%3AC%2B%2B)          | Surcharge d’opérateurs, polymorphisme ad-hoc      | C++                         | Operator overloading, const                       |
+| 15 | [CPP03](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP03__H%C3%A9ritage-%26-Classes-Abstraites__%3AC%2B%2B)          | Héritage, classes abstraites                      | C++                         | Inheritance, polymorphisme                        |
+| 16 | [CPP04](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP04__Polymorphisme-Dynamique__%3AC%2B%2B)          | Interfaces, polymorphisme dynamique               | C++                         | Abstract classes, virtual functions               |
+| 17 | [CPP05](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP05__Exceptions-%26-Gestion-Erreurs__%3AC%2B%2B)          | Exceptions, gestion d’erreurs                     | C++                         | Try/catch, throw, logique d’erreur                |
+| 18 | [CPP06](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP06__Casts-%26-Types-Scalaires__%3AC%2B%2B)          | Casts explicites, types scalaires                 | C++                         | Casts (static, dynamic, etc.), types              |
+| 19 | [CPP07](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP07__Templates-%26-Containers__%3AC%2B%2B)          | Templates, conteneurs                             | C++                         | Templates, classes génériques                     |
+| 20 | [CPP08](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP08__Algorithmes-STL-%26-It%C3%A9rateurs__%3AC%2B%2B)          | Algorithmes STL, itérateurs                       | C++                         | STL, algorithmes, iterators                       |
+| 21 | [CPP09](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/CPP09__CustomContainers__%3AC%2B%2B)          | Conteneurs personnalisés                          | C++                         | Containers, TAD, efficience                       |
+| 22 | [Inception](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Inception__DockerStack__%3ADevOps_%3AContainers)      | Docker, NGINX, WordPress, MariaDB                 | DevOps / Docker             | Docker, volumes, services                         |
+| 23 | [Webserv](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Webserv__HTTPServer__%3AC%2B%2B_%3AWeb-Backend)        | Serveur HTTP en C++ (HTTP/1.1, CGI...)            | C++ / Web backend           | HTTP, socket, parser, multiclient                 |
+| 24 | [Transcendance](https://github.com/ChrstphrChevalier/42-Digital-Technology-Architect/tree/main/Transcendance__FullStack-App__%3ADjango_%3AJavascript)  | Application web temps réel (jeux, chat, auth)     | Django / JavaScript         | WebSocket, Auth, DB                               |
 
 
 
